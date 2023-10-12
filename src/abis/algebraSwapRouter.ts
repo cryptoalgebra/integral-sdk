@@ -211,7 +211,7 @@ export const algebraSwapRouterABI = [
                 "type": "uint256"
             }
         ],
-        "stateMutability": "nonpayable",
+        "stateMutability": "payable",
         "type": "function"
     },
     {
@@ -273,11 +273,6 @@ export const algebraSwapRouterABI = [
                         "internalType": "address",
                         "name": "tokenOut",
                         "type": "address"
-                    },
-                    {
-                        "internalType": "uint24",
-                        "name": "fee",
-                        "type": "uint24"
                     },
                     {
                         "internalType": "address",
