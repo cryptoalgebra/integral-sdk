@@ -50,14 +50,14 @@ export function computePoolAddressZkSync({
   tokenB,
   initCodeHashManualOverride,
 }: {
-  poolDeployer: string
   tokenA: Token
   tokenB: Token
   initCodeHashManualOverride?: string
+  poolDeployer?: string
 }): string {
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
   return getCreate2AddressZk(
-    poolDeployer,
+    poolDeployer ?? POOL_DEPLOYER_ADDRESSES[tokenA.chainId],
     keccak256(['bytes'], [defaultAbiCoder.encode(['address', 'address'], [token0.address, token1.address])]),
     initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId]
   )
