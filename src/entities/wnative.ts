@@ -5,13 +5,6 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.MantleTestnet]: new Token(
-    ChainId.MantleTestnet,
-    '0x6e2542afc68a1697feb2810437df9409d3b93493',
-    18,
-    'WMNT',
-    'Wrapped MNT',
-  ),
   [ChainId.Goerli]: new Token(
     ChainId.Goerli,
     '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6',
@@ -32,5 +25,33 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WBNB',
     'WRAPPED BNB'
+  ),
+  [ChainId.Mantle]: new Token(
+    ChainId.Mantle,
+    '0x78c1b0c915c4faa5fffa6cabf0219da63d7f4cb8',
+    18,
+    'WMNT',
+    'WRAPPED MNT'
+  ),
+  [ChainId.Telos]: new Token(
+    ChainId.Telos,
+    '0xd102ce6a4db07d247fcc28f366a623df0938ca9e',
+    18,
+    'TLOS',
+    'WRAPPED TLOS'
+  ),
+  [ChainId.MantleTestnet]: new Token(
+    ChainId.MantleTestnet,
+    '0x6e2542afc68a1697feb2810437df9409d3b93493',
+    18,
+    'WMNT',
+    'WRAPPED MNT',
+  ),
+  [ChainId.TelosTestnet]: new Token(
+    ChainId.TelosTestnet,
+    '0x6e2542afc68a1697feb2810437df9409d3b93493',
+    18,
+    'TLOS',
+    'WRAPPED TLOS'
   )
 };

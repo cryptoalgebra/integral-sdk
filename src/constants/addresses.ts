@@ -1,15 +1,21 @@
 import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.MantleTestnet]: '0x07099fEf5825e3298111C21a23A1283aB24eDb39',
     [ChainId.Goerli]: '0x03f8B4b140249Dc7B2503C928E7258CCe1d91F1A',
     [ChainId.ZKSyncTestnet]: '0xbf3687C4475496126640fE631c2B30CAf552dC68',
-    [ChainId.BSCTestnet]: '0x66997a68146274b888b7Fa7d2301cae19158f1E0'
+    [ChainId.BSCTestnet]: '0x66997a68146274b888b7Fa7d2301cae19158f1E0',
+    [ChainId.Mantle]: '0x9dE2dEA5c68898eb4cb2DeaFf357DFB26255a4aa',
+    [ChainId.Telos]: '0x061e47Ab9f31D293172efb88674782f80eCa88de',
+    [ChainId.MantleTestnet]: '0x2d082cDE2894Fe900001d5cb3aBa84c95b4E9cF7',
+    [ChainId.TelosTestnet]: '0xE63AEf68c9C80C06d241d44B3C21Da4da2E582Bd'
 }
 
 export const POOL_INIT_CODE_HASH = {
-    [ChainId.MantleTestnet]: '0x634db8d334cf38f8d669064fefe5c4f5cf194cab753e4ed23256fb4dd545ed7a',
     [ChainId.Goerli]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.ZKSyncTestnet]: '0x01001625a500a20b4626b494f0d5b1b3c60127f09224390ffb85bef75dbd81f9',
-    [ChainId.BSCTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91'
+    [ChainId.BSCTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
+    [ChainId.Mantle]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
+    [ChainId.Telos]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
+    [ChainId.MantleTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
+    [ChainId.TelosTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91'
 }
