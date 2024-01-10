@@ -19,6 +19,13 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WETH',
     'WRAPPED ETH'
   ),
+  [ChainId.ZKSync]: new Token(
+    ChainId.ZKSync,
+    '0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  ),
   [ChainId.BSCTestnet]: new Token(
     ChainId.BSCTestnet,
     '0x094616f0bdfb0b526bd735bf66eca0ad254ca81f',
