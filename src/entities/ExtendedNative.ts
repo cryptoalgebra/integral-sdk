@@ -9,10 +9,10 @@ export class ExtendedNative extends Native {
     return WNATIVE[this.chainId];
   }
 
-  public static onChain(chainId: number): ExtendedNative {
+  public static onChain(chainId: number, symbol: string, name: string): ExtendedNative {
     return (
       this._cachedNative[chainId] ??
-      (this._cachedNative[chainId] = new ExtendedNative(chainId))
+      (this._cachedNative[chainId] = new ExtendedNative(chainId, symbol, name))
     );
   }
 }

@@ -5,5 +5,6 @@ export const ChainId = {
     Mantle: 5000,
     Telos: 40,
     MantleTestnet: 5001,
-    TelosTestnet: 41 
+    TelosTestnet: 41,
+    BerachainTestnet: 2061
 }

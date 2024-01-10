@@ -7,7 +7,8 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.Mantle]: '0x9dE2dEA5c68898eb4cb2DeaFf357DFB26255a4aa',
     [ChainId.Telos]: '0x061e47Ab9f31D293172efb88674782f80eCa88de',
     [ChainId.MantleTestnet]: '0x2d082cDE2894Fe900001d5cb3aBa84c95b4E9cF7',
-    [ChainId.TelosTestnet]: '0xE63AEf68c9C80C06d241d44B3C21Da4da2E582Bd'
+    [ChainId.TelosTestnet]: '0xE63AEf68c9C80C06d241d44B3C21Da4da2E582Bd',
+    [ChainId.BerachainTestnet]: '0xFb5521A236e7e8212D9741d5C71baf0283Dc5a2a'
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -17,5 +18,6 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.Mantle]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.Telos]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.MantleTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
-    [ChainId.TelosTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91'
+    [ChainId.TelosTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
+    [ChainId.BerachainTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91'
 }

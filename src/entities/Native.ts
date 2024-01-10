@@ -10,8 +10,8 @@ import { WNATIVE } from "./wnative";
  * Native is the main usage of a 'native' currency
  */
 export class Native extends NativeCurrency {
-  protected constructor(chainId: number) {
-    super(chainId, 18, 'WETH', 'Wrapped ETH');
+  protected constructor(chainId: number, symbol: string, name: string) {
+    super(chainId, 18, symbol, name);
   }
 
   public get wrapped(): Token {
@@ -22,10 +22,10 @@ export class Native extends NativeCurrency {
 
   private static _naitveCache: { [chainId: number]: Native } = {};
 
-  public static onChain(chainId: number): Native {
+  public static onChain(chainId: number, symbol: string, name: string): Native {
     return (
       this._naitveCache[chainId] ??
-      (this._naitveCache[chainId] = new Native(chainId))
+      (this._naitveCache[chainId] = new Native(chainId, symbol, name))
     );
   }
 
