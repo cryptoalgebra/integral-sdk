@@ -67,5 +67,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'BERA',
     'WRAPPED BERA'
+  ),
+  [ChainId.MeterTestnet]: new Token(
+    ChainId.MeterTestnet,
+    '0xfAC315d105E5A7fe2174B3EB1f95C257A9A5e271',
+    18,
+    'WMTR',
+    'WRAPPED MTR'
   )
 };
