@@ -67,5 +67,26 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'BERA',
     'WRAPPED BERA'
-  )
+  ),
+  [ChainId.FormTestnet]: new Token(
+    ChainId.FormTestnet,
+    '0xa65be6d7de4a82cc9638fb3dbf8e68b7f2e757ab',
+    18,
+    'ETH',
+    'WRAPPED ETH'
+  ),
+  [ChainId.Katla]: new Token(
+    ChainId.Katla,
+    '0x003eaAf23aa5fe907F32F7c415a2075b5f1629a2',
+    18,
+    'ETH',
+    'WRAPPED ETH'
+  ),
+  [ChainId.Holesky]: new Token(
+    ChainId.Holesky,
+    '0x94373a4919b3240d86ea41593d5eba789fef3848',
+    18,
+    'ETH',
+    'WRAPPED ETH'
+  ),
 };
