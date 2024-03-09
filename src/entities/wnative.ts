@@ -44,7 +44,7 @@ export const WNATIVE: { [chainId: number]: Token } = {
     ChainId.Telos,
     '0xd102ce6a4db07d247fcc28f366a623df0938ca9e',
     18,
-    'TLOS',
+    'WTLOS',
     'WRAPPED TLOS'
   ),
   [ChainId.MantleTestnet]: new Token(
@@ -58,35 +58,49 @@ export const WNATIVE: { [chainId: number]: Token } = {
     ChainId.TelosTestnet,
     '0x6e2542afc68a1697feb2810437df9409d3b93493',
     18,
-    'TLOS',
+    'WTLOS',
     'WRAPPED TLOS'
   ),
   [ChainId.BerachainTestnet]: new Token(
     ChainId.BerachainTestnet,
     '0x5806e416da447b267cea759358cf22cc41fae80f',
     18,
-    'BERA',
+    'WBERA',
     'WRAPPED BERA'
   ),
   [ChainId.FormTestnet]: new Token(
     ChainId.FormTestnet,
     '0xa65be6d7de4a82cc9638fb3dbf8e68b7f2e757ab',
     18,
-    'ETH',
+    'WETH',
     'WRAPPED ETH'
   ),
   [ChainId.Katla]: new Token(
     ChainId.Katla,
     '0x003eaAf23aa5fe907F32F7c415a2075b5f1629a2',
     18,
-    'ETH',
+    'WETH',
     'WRAPPED ETH'
   ),
   [ChainId.Holesky]: new Token(
     ChainId.Holesky,
     '0x94373a4919b3240d86ea41593d5eba789fef3848',
     18,
-    'ETH',
+    'WETH',
     'WRAPPED ETH'
   ),
+  [ChainId.Mode]: new Token(
+    ChainId.Mode,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  ),
+  [ChainId.BlastTestnet]: new Token(
+    ChainId.BlastTestnet,
+    '0x4200000000000000000000000000000000000023',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  )
 };

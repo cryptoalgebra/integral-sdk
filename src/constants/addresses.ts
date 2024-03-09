@@ -12,7 +12,9 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.BerachainTestnet]: '0x8De8b998D9Fda4586ccf7758B1169b6629fa6dA7',
     [ChainId.FormTestnet]: '0xff9e6a70D96D486C7aC0867Ced49ca38277f0C3A',
     [ChainId.Katla]: '0xfEE449019c51242F3b4E96A0bc66B455950c2650',
-    [ChainId.Holesky]: '0x69D57B9D705eaD73a5d2f2476C30c55bD755cc2F'
+    [ChainId.Holesky]: '0x69D57B9D705eaD73a5d2f2476C30c55bD755cc2F',
+    [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
+    [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A'
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -27,5 +29,7 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.BerachainTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.FormTestnet]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.Katla]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
-    [ChainId.Holesky]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.Holesky]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.Mode]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }

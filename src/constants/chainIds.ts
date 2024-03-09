@@ -10,5 +10,7 @@ export const ChainId = {
     BerachainTestnet: 80085,
     FormTestnet: 132902,
     Katla: 167008,
-    Holesky: 17000
+    Holesky: 17000,
+    Mode: 34443,
+    BlastTestnet: 23888
 }
