@@ -102,5 +102,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WETH',
     'WRAPPED ETH'
+  ),
+  [ChainId.BlastTestnetBlade]: new Token(
+    ChainId.BlastTestnetBlade,
+    '0x4200000000000000000000000000000000000023',
+    18,
+    'WETH',
+    'WRAPPED ETH'
   )
 };

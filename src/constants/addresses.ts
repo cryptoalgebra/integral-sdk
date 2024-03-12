@@ -10,11 +10,12 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.MantleTestnet]: '0x2d082cDE2894Fe900001d5cb3aBa84c95b4E9cF7',
     [ChainId.TelosTestnet]: '0xE63AEf68c9C80C06d241d44B3C21Da4da2E582Bd',
     [ChainId.BerachainTestnet]: '0x8De8b998D9Fda4586ccf7758B1169b6629fa6dA7',
-    [ChainId.FormTestnet]: '0xff9e6a70D96D486C7aC0867Ced49ca38277f0C3A',
+    [ChainId.FormTestnet]: '0x9F2604a7C4f28F057363218cd90590695F0E2540',
     [ChainId.Katla]: '0xfEE449019c51242F3b4E96A0bc66B455950c2650',
     [ChainId.Holesky]: '0x69D57B9D705eaD73a5d2f2476C30c55bD755cc2F',
     [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
-    [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A'
+    [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
+    [ChainId.BlastTestnetBlade]: '0x49BE8AA6c684b15e0C5450e8Fa0b16Bec1435596'
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -31,5 +32,6 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.Katla]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.Holesky]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.Mode]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
-    [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.BlastTestnetBlade]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }
