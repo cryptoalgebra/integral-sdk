@@ -12,6 +12,7 @@ export const ChainId = {
     Katla: 167008,
     Holesky: 17000,
     Mode: 34443,
+    ModeTestnet: 919,
     BlastTestnet: 23888,
-    BlastTestnetBlade: 23888
+    BlastTestnetBlade: 168587773
 }

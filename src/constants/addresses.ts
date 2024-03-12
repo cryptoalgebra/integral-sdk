@@ -14,6 +14,7 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.Katla]: '0xfEE449019c51242F3b4E96A0bc66B455950c2650',
     [ChainId.Holesky]: '0x69D57B9D705eaD73a5d2f2476C30c55bD755cc2F',
     [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
+    [ChainId.ModeTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.BlastTestnetBlade]: '0x49BE8AA6c684b15e0C5450e8Fa0b16Bec1435596'
 }
@@ -32,6 +33,7 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.Katla]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
     [ChainId.Holesky]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.Mode]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.ModeTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.BlastTestnetBlade]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }

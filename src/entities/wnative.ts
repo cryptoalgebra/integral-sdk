@@ -96,6 +96,13 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WETH',
     'WRAPPED ETH'
   ),
+  [ChainId.ModeTestnet]: new Token(
+    ChainId.ModeTestnet,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  ),
   [ChainId.BlastTestnet]: new Token(
     ChainId.BlastTestnet,
     '0x4200000000000000000000000000000000000023',
