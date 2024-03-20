@@ -16,7 +16,9 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
     [ChainId.ModeTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
-    [ChainId.BlastTestnetBlade]: '0x49BE8AA6c684b15e0C5450e8Fa0b16Bec1435596'
+    [ChainId.BlastTestnetBlade]: '0x49BE8AA6c684b15e0C5450e8Fa0b16Bec1435596',
+    [ChainId.Arthera]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
+    [ChainId.ArtheraTestnet]: '0x03f8B4b140249Dc7B2503C928E7258CCe1d91F1A'
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -35,5 +37,7 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.Mode]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.ModeTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
-    [ChainId.BlastTestnetBlade]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.BlastTestnetBlade]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.Arthera]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.ArtheraTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }

@@ -14,5 +14,7 @@ export const ChainId = {
     Mode: 34443,
     ModeTestnet: 919,
     BlastTestnet: 23888,
-    BlastTestnetBlade: 168587773
+    BlastTestnetBlade: 168587773,
+    Arthera: 10242,
+    ArtheraTestnet: 10243
 }
