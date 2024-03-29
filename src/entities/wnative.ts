@@ -130,5 +130,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WAA',
     'WRAPPED AA'
+  ),
+  [ChainId.LineaSepolia]: new Token(
+    ChainId.LineaSepolia,
+    '0x10253594A832f967994b44f33411940533302ACb',
+    18,
+    'WETH',
+    'WRAPPED ETH'
   )
 };
