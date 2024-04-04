@@ -137,5 +137,33 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WETH',
     'WRAPPED ETH'
+  ),
+  [ChainId.MantleSepolia]: new Token(
+    ChainId.MantleSepolia,
+    '0xb1eda18c1b730a973dac2ec37cfd5685d7de10dd',
+    18,
+    'WMNT',
+    'WRAPPED MNT'
+  ),
+  [ChainId.SeiDevnet]: new Token(
+    ChainId.SeiDevnet,
+    '0x57eE725BEeB991c70c53f9642f36755EC6eb2139',
+    18,
+    'WSEI',
+    'WRAPPED SEI'
+  ),
+  [ChainId.NeonDevnet]: new Token(
+    ChainId.NeonDevnet,
+    '0x11adC2d986E334137b9ad0a0F290771F31e9517F',
+    18,
+    'WNEON',
+    'WRAPPED NEON'
+  ),
+  [ChainId.Linea]: new Token(
+    ChainId.Linea,
+    '0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f',
+    18,
+    'WETH',
+    'WRAPPED ETH'
   )
 };

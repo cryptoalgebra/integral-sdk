@@ -17,5 +17,9 @@ export const ChainId = {
     BlastTestnetBlade: 168587773,
     Arthera: 10242,
     ArtheraTestnet: 10243,
-    LineaSepolia: 59141
+    LineaSepolia: 59141,
+    MantleSepolia: 5003,
+    SeiDevnet: 713715,
+    NeonDevnet: 245022926,
+    Linea: 59144
 }
