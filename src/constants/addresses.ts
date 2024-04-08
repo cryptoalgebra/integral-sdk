@@ -16,14 +16,15 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
     [ChainId.ModeTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
-    [ChainId.BlastTestnetBlade]: '0x49BE8AA6c684b15e0C5450e8Fa0b16Bec1435596',
+    [ChainId.BlastTestnetBlade]: '0xF2738e308b9BDc6475e375ad5dd50517B6Df9009',
     [ChainId.Arthera]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.ArtheraTestnet]: '0x03f8B4b140249Dc7B2503C928E7258CCe1d91F1A',
     [ChainId.LineaSepolia]: '0x99E317c0099F0fB8C5913db976d00fddeDB69583',
     [ChainId.MantleSepolia]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.SeiDevnet]: '0x6AD6A4f233F1E33613e996CCc17409B93fF8bf5f',
     [ChainId.NeonDevnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
-    [ChainId.Linea]: '0xA76990a229961280200165c4e08c96Ea67304C3e'
+    [ChainId.Linea]: '0xA76990a229961280200165c4e08c96Ea67304C3e',
+    [ChainId.BaseSepolia]: '0x4439199c3743161ca22bB8F8B6deC5bF6fF65b04'
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -42,12 +43,13 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.Mode]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.ModeTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.BlastTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
-    [ChainId.BlastTestnetBlade]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.BlastTestnetBlade]: '0xa58656484de172ae0d4ecbb45c1b0f1eb82cfe33cf9653f79a430c2b3faa52d4',
     [ChainId.Arthera]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.ArtheraTestnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.LineaSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.MantleSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.SeiDevnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.NeonDevnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
-    [ChainId.Linea]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.Linea]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.BaseSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }

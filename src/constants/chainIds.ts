@@ -21,5 +21,6 @@ export const ChainId = {
     MantleSepolia: 5003,
     SeiDevnet: 713715,
     NeonDevnet: 245022926,
-    Linea: 59144
+    Linea: 59144,
+    BaseSepolia: 84532
 }
