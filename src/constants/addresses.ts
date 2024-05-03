@@ -12,7 +12,7 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.BerachainTestnet]: '0x54506e0a71f6c883dA3c7eaDb0aEbEDbaC0c59f5',
     [ChainId.FormTestnet]: '0xD9C1b76e7b0a1Cbcefe99744D6a98872F47917Ba',
     [ChainId.Katla]: '0xfEE449019c51242F3b4E96A0bc66B455950c2650',
-    [ChainId.Holesky]: '0x69D57B9D705eaD73a5d2f2476C30c55bD755cc2F',
+    [ChainId.Holesky]: '0x23cA0Fb37cbdC80f8317972aBc8ae928866F62a8',
     [ChainId.Mode]: '0x6414A461B19726410E52488d9D5ff33682701635',
     [ChainId.ModeTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.BlastTestnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
