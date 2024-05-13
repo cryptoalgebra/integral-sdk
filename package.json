@@ -33,7 +33,7 @@
   },
   "name": "@cryptoalgebra/swapx-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/integral-sdk.esm.js",
+  "module": "dist/swapx-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
@@ -55,5 +55,5 @@
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
