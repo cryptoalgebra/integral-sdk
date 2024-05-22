@@ -34,7 +34,7 @@
   },
   "name": "@henjin/sdk",
   "author": "cryptoalgebra",
-  "module": "dist/integral-sdk.esm.js",
+  "module": "dist/sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",

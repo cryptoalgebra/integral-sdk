@@ -2,7 +2,6 @@ import JSBI from 'jsbi';
 import { NEGATIVE_ONE, ZERO } from '../constants/internalConstants';
 import { FullMath } from './fullMath';
 import { SqrtPriceMath } from './sqrtPriceMath';
-import { InitialPoolFee } from "../types/InitialPoolFee";
 
 const MAX_FEE = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(6));
 
@@ -16,7 +15,7 @@ export abstract class SwapMath {
     sqrtRatioTargetX96: JSBI,
     liquidity: JSBI,
     amountRemaining: JSBI,
-    feePips: InitialPoolFee,
+    feePips: number,
   ): [JSBI, JSBI, JSBI, JSBI] {
     const returnValues: Partial<{
       sqrtRatioNextX96: JSBI;
