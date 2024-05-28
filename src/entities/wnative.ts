@@ -1,4 +1,4 @@
-import { ChainId } from "../constants/chainIds";
+import { ChainId } from '../constants/chainIds';
 import { Token } from './Token';
 
 /**
@@ -52,7 +52,7 @@ export const WNATIVE: { [chainId: number]: Token } = {
     '0x6e2542afc68a1697feb2810437df9409d3b93493',
     18,
     'WMNT',
-    'WRAPPED MNT',
+    'WRAPPED MNT'
   ),
   [ChainId.TelosTestnet]: new Token(
     ChainId.TelosTestnet,
@@ -172,5 +172,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WETH',
     'WRAPPED ETH'
-  )
+  ),
+  [ChainId.Moonriver]: new Token(
+    ChainId.Moonriver,
+    '0x98878B06940aE243284CA214f92Bb71a2b032B8A',
+    18,
+    'WMOVR',
+    'Wrapped MOVR'
+  ),
 };
