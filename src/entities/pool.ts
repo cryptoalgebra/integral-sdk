@@ -10,7 +10,6 @@ import { TickMath } from '../utils/tickMath';
 import { Tick, TickConstructorArgs } from './tick';
 import { NoTickDataProvider, TickDataProvider } from './tickDataProvider';
 import { TickListDataProvider } from './tickListDataProvider';
-import { InitialPoolFee } from "../types/InitialPoolFee";
 import { POOL_DEPLOYER_ADDRESSES } from "../constants";
 
 interface StepComputations {
@@ -34,7 +33,7 @@ const NO_TICK_DATA_PROVIDER_DEFAULT = new NoTickDataProvider();
 export class Pool {
   public readonly token0: Token;
   public readonly token1: Token;
-  public readonly fee: InitialPoolFee;
+  public readonly fee: number;
   public readonly sqrtRatioX96: JSBI;
   public readonly liquidity: JSBI;
   public readonly tickCurrent: number;
@@ -55,7 +54,7 @@ export class Pool {
   public constructor(
     tokenA: Token,
     tokenB: Token,
-    fee: InitialPoolFee,
+    fee: number,
     sqrtRatioX96: BigintIsh,
     liquidity: BigintIsh,
     tickCurrent: number,

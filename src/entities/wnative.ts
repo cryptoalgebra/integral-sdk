@@ -7,16 +7,16 @@ import { Token } from './Token';
 export const WNATIVE: { [chainId: number]: Token } = {
   [ChainId.XLayer]: new Token(
     ChainId.XLayer,
-    '0x0faC0BC0909c3b545b8A0Bc04FE4db10662CDF02',
+    '0x87a851c652e5d772ba61ec320753c6349bb3c1e3',
     18,
-    'WETH',
-    'WRAPPED ETH'
+    'WOKB',
+    'WRAPPED OKB'
   ),
   [ChainId.XLayerTestnet]: new Token(
     ChainId.XLayerTestnet,
-    '0x0faC0BC0909c3b545b8A0Bc04FE4db10662CDF02',
+    '0x87a851c652e5d772ba61ec320753c6349bb3c1e3',
     18,
-    'WETH',
-    'WRAPPED ETH'
+    'WOKB',
+    'WRAPPED OKB'
   )
 };
