@@ -1,4 +1,3 @@
 export const ChainId = {
-    XLayerTestnet: 195,
-    XLayer: 196
+    Moonriver: 1285
 }
