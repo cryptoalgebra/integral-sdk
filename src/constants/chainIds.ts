@@ -1,3 +1,3 @@
 export const ChainId = {
-    Moonriver: 1285
+    CoreTestnet: 1115
 }
