@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/beamswap-sdk",
+  "name": "@cryptoalgebra/glyph-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/beamswap-sdk.esm.js",
+  "module": "dist/glyph-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
