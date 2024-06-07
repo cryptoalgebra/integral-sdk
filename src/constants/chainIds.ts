@@ -1,3 +1,6 @@
 export const ChainId = {
-    Moonriver: 1285
+    Mode: 34443,
+    ModeTestnet: 919,
+    Base: 8453,
+    BaseSepolia: 84532
 }
