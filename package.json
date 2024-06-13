@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/kim-sdk",
+  "name": "@cryptoalgebra/x-trade-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/kim-sdk.esm.js",
+  "module": "dist/x-trade-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
