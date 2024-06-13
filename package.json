@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/x-trade-sdk",
+  "name": "@cryptoalgebra/custom-pools-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/x-trade-sdk.esm.js",
+  "module": "dist/custom-pools-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
