@@ -11,5 +11,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WOKB',
     'Wrapped OKB'
+  ),
+  [ChainId.Holesky]: new Token(
+    ChainId.Holesky,
+    '0x94373a4919b3240d86ea41593d5eba789fef3848',
+    18,
+    'WETH',
+    'Wrapped ETH'
   )
 };
