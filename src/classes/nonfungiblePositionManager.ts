@@ -54,6 +54,11 @@ export interface CommonAddLiquidityOptions {
   deadline: BigintIsh;
 
   /**
+   * Pool Deployer address. ZERO_ADDRESS if base pool
+   */
+  deployer?: string;
+
+  /**
    * Whether to spend ether. If true, one of the pool tokens must be WETH, by default false
    */
   useNative?: NativeCurrency;
@@ -162,9 +167,9 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     super();
   }
 
-  public static createCallParameters(pool: Pool): MethodParameters {
+  public static createCallParameters(pool: Pool, deployer?: string): MethodParameters {
     return {
-      calldata: this.encodeCreate(pool),
+      calldata: this.encodeCreate(pool, deployer || pool.deployer),
       value: toHex(0),
     };
   }
@@ -193,7 +198,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
 
     // create pool if needed
     if (isMint(options) && options.createPool) {
-      calldatas.push(this.encodeCreate(position.pool));
+      calldatas.push(this.encodeCreate(position.pool, options.deployer || position.pool.deployer));
     }
 
     // permits if necessary
@@ -224,6 +229,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
           {
             token0: position.pool.token0.address,
             token1: position.pool.token1.address,
+            deployer: position.pool.deployer,
             tickLower: position.tickLower,
             tickUpper: position.tickUpper,
             amount0Desired: toHex(amount0Desired),
@@ -400,10 +406,10 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     };
   }
 
-  private static encodeCreate(pool: Pool): string {
+  private static encodeCreate(pool: Pool, deployer: string): string {
     return NonfungiblePositionManager.INTERFACE.encodeFunctionData(
       'createAndInitializePoolIfNecessary',
-      [pool.token0.address, pool.token1.address, toHex(pool.sqrtRatioX96)],
+      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96)],
     );
   }
 

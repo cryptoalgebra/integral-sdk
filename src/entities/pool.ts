@@ -35,6 +35,7 @@ export class Pool {
   public readonly token1: Token;
   public readonly fee: number;
   public readonly sqrtRatioX96: JSBI;
+  public readonly deployer: string;
   public readonly liquidity: JSBI;
   public readonly tickCurrent: number;
   public readonly tickDataProvider: TickDataProvider;
@@ -56,6 +57,7 @@ export class Pool {
     tokenB: Token,
     fee: number,
     sqrtRatioX96: BigintIsh,
+    deployer: string,
     liquidity: BigintIsh,
     tickCurrent: number,
     _tickSpacing: number,
@@ -81,6 +83,7 @@ export class Pool {
       : [tokenB, tokenA];
     this.fee = fee;
     this.sqrtRatioX96 = JSBI.BigInt(sqrtRatioX96);
+    this.deployer = deployer;
     this.liquidity = JSBI.BigInt(liquidity);
     this.tickCurrent = tickCurrent;
     this.tickDataProvider = Array.isArray(ticks)
@@ -197,6 +200,7 @@ export class Pool {
         this.token1,
         this.fee,
         sqrtRatioX96,
+        this.deployer,
         liquidity,
         tickCurrent,
         this.tickSpacing,
@@ -241,6 +245,7 @@ export class Pool {
         this.token1,
         this.fee,
         sqrtRatioX96,
+        this.deployer,
         liquidity,
         tickCurrent,
         this.tickSpacing,
