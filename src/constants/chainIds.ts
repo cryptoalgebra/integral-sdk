@@ -1,3 +1,3 @@
 export const ChainId = {
-    CoreTestnet: 1115
-}
+  Zircuit: 48899,
+};
