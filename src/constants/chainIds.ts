@@ -1,3 +1,3 @@
 export const ChainId = {
-  Zircuit: 48899,
+  XLayer: 196,
 };

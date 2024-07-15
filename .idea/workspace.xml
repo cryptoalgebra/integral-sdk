@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/addresses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/addresses.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/chainIds.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/chainIds.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/wnative.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/wnative.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "circuit",
+    "git-widget-placeholder": "qs-x",
     "last_opened_file_path": "/home/lilchizh/Documents/integral-sdk",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -80,6 +81,7 @@
       <workItem from="1720023977715" duration="3407000" />
       <workItem from="1720167246374" duration="599000" />
       <workItem from="1720619016293" duration="199000" />
+      <workItem from="1721056765340" duration="155000" />
     </task>
     <servers />
   </component>
