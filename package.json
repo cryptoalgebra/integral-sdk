@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/circuit-sdk",
+  "name": "@cryptoalgebra/qs-x-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/circuit-sdk.esm.js",
+  "module": "dist/qs-x-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
@@ -55,5 +55,5 @@
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
-  "version": "1.1.0"
+  "version": "1.0.0"
 }
