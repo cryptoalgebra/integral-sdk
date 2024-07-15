@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80eea033-012e-4b67-9b51-008c5e3bf5c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/addresses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/addresses.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/chainIds.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/chainIds.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/wnative.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/wnative.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="kim" />
+        <entry key="$PROJECT_DIR$" value="glyph" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +40,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "glyph",
+    "git-widget-placeholder": "circuit",
     "last_opened_file_path": "/home/lilchizh/Documents/integral-sdk",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -78,7 +79,7 @@
       <workItem from="1719570854533" duration="1306000" />
       <workItem from="1720023977715" duration="3407000" />
       <workItem from="1720167246374" duration="599000" />
-      <workItem from="1720619016293" duration="64000" />
+      <workItem from="1720619016293" duration="199000" />
     </task>
     <servers />
   </component>
