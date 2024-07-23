@@ -1,3 +1,3 @@
 export const ChainId = {
-  XLayer: 196,
+  ScrollMainnet: 534352,
 };
