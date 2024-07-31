@@ -174,6 +174,7 @@ export abstract class SwapRouter extends SelfPermit {
             const exactInputSingleParams = {
               tokenIn: route.tokenPath[0].address,
               tokenOut: route.tokenPath[1].address,
+              deployer: ADDRESS_ZERO,
               recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
               deadline,
               amountIn,
@@ -193,6 +194,7 @@ export abstract class SwapRouter extends SelfPermit {
               tokenIn: route.tokenPath[0].address,
               tokenOut: route.tokenPath[1].address,
               recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
+              deployer: ADDRESS_ZERO,
               deadline,
               amountOut,
               amountInMaximum: amountIn,
