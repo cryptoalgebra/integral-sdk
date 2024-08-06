@@ -2,6 +2,7 @@ import { pack } from '@ethersproject/solidity';
 import { Pool } from '../entities/pool';
 import { Route } from '../entities/route';
 import { Currency, Token } from "../entities";
+import { ADDRESS_ZERO } from "../constants";
 
 /**
  * Converts a route to a hex encoded path
@@ -30,14 +31,14 @@ export function encodeRouteToPath(
       if (index === 0) {
         return {
           inputToken: outputToken,
-          types: ['address', 'address'],
-          path: [inputToken.address, outputToken.address],
+          types: ['address', 'address', 'address'],
+          path: [inputToken.address, ADDRESS_ZERO, outputToken.address],
         };
       } else {
         return {
           inputToken: outputToken,
-          types: [...types, 'address'],
-          path: [...path, outputToken.address],
+          types: [...types, 'address', 'address'],
+          path: [...path, ADDRESS_ZERO , outputToken.address],
         };
       }
     },
