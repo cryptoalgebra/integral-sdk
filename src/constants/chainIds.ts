@@ -1,3 +1,4 @@
 export const ChainId = {
-    ScrollMainnet: 534352,
+    ZircuitTestnet: 48899,
+    ZircuitMainnet: 48900,
 }
