@@ -5,16 +5,16 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.Katla]: new Token(
-    ChainId.Katla,
-    '0x003eaAf23aa5fe907F32F7c415a2075b5f1629a2',
+  [ChainId.BaseSepolia]: new Token(
+    ChainId.BaseSepolia,
+    '0x10253594A832f967994b44f33411940533302ACb',
     18,
     'WETH',
     'WRAPPED ETH'
   ),
-  [ChainId.Hekla]: new Token(
-    ChainId.Hekla,
-    '0x4539fB30977A7dE928631f16c45354BA6fdbb9bf',
+  [ChainId.BaseMainnet]: new Token(
+    ChainId.BaseMainnet,
+    '0x4200000000000000000000000000000000000006',
     18,
     'WETH',
     'WRAPPED ETH'

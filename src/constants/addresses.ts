@@ -1,11 +1,11 @@
 import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.Katla]: '0xfEE449019c51242F3b4E96A0bc66B455950c2650',
-    [ChainId.Hekla]: '0x6F2B40BD3Cf527b0d82BaE0A826B05A9df7991d4'
+    [ChainId.BaseSepolia]: '0x4439199c3743161ca22bB8F8B6deC5bF6fF65b04',
+    [ChainId.BaseMainnet]: '0xb68b27a1c93A52d698EecA5a759E2E4469432C09'
 }
 
 export const POOL_INIT_CODE_HASH = {
-    [ChainId.Katla]: '0x177d5fbf994f4d130c008797563306f1a168dc689f81b2fa23b4396931014d91',
-    [ChainId.Hekla]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.BaseSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.BaseMainnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
 }

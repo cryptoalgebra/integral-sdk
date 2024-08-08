@@ -1,4 +1,4 @@
 export const ChainId = {
-    Katla: 167008,
-    Hekla: 167009
+    BaseSepolia: 84532,
+    BaseMainnet: 8453
 }
