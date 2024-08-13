@@ -1,3 +1,3 @@
 export const ChainId = {
-  ScrollMainnet: 534352,
+  ScrollSepolia: 534351,
 };
