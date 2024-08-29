@@ -1,7 +1,7 @@
 import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.Holesky]: '0xd8fdd419D0cA840D6c44a721FA56654d61B0191A',
+    [ChainId.Holesky]: '0x4777378A908A90862AdDedabF9388958Cbd020f1',
 }
 
 export const POOL_INIT_CODE_HASH = {
