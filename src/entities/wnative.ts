@@ -172,5 +172,19 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WETH',
     'WRAPPED ETH'
-  )
+  ),
+  [ChainId.Taiko]: new Token(
+    ChainId.Taiko,
+    '0xA51894664A773981C6C112C43ce576f315d5b1B6',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  ),
+  [ChainId.TaikoHekla]: new Token(
+    ChainId.TaikoHekla,
+    '0xae2C46ddb314B9Ba743C6dEE4878F151881333D9',
+    18,
+    'WETH',
+    'WRAPPED ETH'
+  ),
 };

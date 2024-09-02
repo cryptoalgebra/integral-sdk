@@ -22,5 +22,7 @@ export const ChainId = {
     SeiDevnet: 713715,
     NeonDevnet: 245022926,
     Linea: 59144,
-    BaseSepolia: 84532
+    BaseSepolia: 84532,
+    Taiko: 167000,
+    TaikoHekla: 167009,
 }

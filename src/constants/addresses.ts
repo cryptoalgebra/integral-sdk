@@ -24,7 +24,9 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.SeiDevnet]: '0x6AD6A4f233F1E33613e996CCc17409B93fF8bf5f',
     [ChainId.NeonDevnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
     [ChainId.Linea]: '0xA76990a229961280200165c4e08c96Ea67304C3e',
-    [ChainId.BaseSepolia]: '0x4439199c3743161ca22bB8F8B6deC5bF6fF65b04'
+    [ChainId.BaseSepolia]: '0x4439199c3743161ca22bB8F8B6deC5bF6fF65b04',
+    [ChainId.Taiko]: '0xb68b27a1c93A52d698EecA5a759E2E4469432C09',
+    [ChainId.TaikoHekla]: '0xf992eBeAB671AAc668Db5f8986276b55E49ec928',
 }
 
 export const POOL_INIT_CODE_HASH = {
@@ -51,5 +53,7 @@ export const POOL_INIT_CODE_HASH = {
     [ChainId.SeiDevnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.NeonDevnet]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
     [ChainId.Linea]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
-    [ChainId.BaseSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d'
+    [ChainId.BaseSepolia]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.Taiko]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
+    [ChainId.TaikoHekla]: '0xf96d2474815c32e070cd63233f06af5413efc5dcb430aee4ff18cc29007c562d',
 }
