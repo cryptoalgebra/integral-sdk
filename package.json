@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/retro-sdk",
+  "name": "@cryptoalgebra/swapsicle-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/retro-sdk.esm.js",
+  "module": "dist/swapsicle-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
@@ -54,6 +54,5 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
-  },
-  "version": "1.1.0"
+  }
 }
