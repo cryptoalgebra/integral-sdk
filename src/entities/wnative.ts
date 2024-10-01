@@ -5,18 +5,11 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.ZircuitTestnet]: new Token(
-    ChainId.ZircuitTestnet,
-    '0x4200000000000000000000000000000000000006',
+  [ChainId.Rootstock]: new Token(
+    ChainId.Rootstock,
+    '0x542fda317318ebf1d3deaf76e0b632741a7e677d',
     18,
-    'WETH',
-    'Wrapped ETH'
+    'WRBTC',
+    'Wrapped BTC'
   ),
-  [ChainId.ZircuitMainnet]: new Token(
-    ChainId.ZircuitMainnet,
-    '0x4200000000000000000000000000000000000006',
-        18,
-        'WETH',
-        'Wrapped ETH'
-    )
 };
