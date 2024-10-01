@@ -409,7 +409,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
   private static encodeCreate(pool: Pool, deployer: string): string {
     return NonfungiblePositionManager.INTERFACE.encodeFunctionData(
       'createAndInitializePoolIfNecessary',
-      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96)],
+      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96), '0x'],
     );
   }
 

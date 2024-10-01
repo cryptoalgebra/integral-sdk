@@ -30,14 +30,14 @@ export function encodeRouteToPath(
       if (index === 0) {
         return {
           inputToken: outputToken,
-          types: ['address', 'address'],
-          path: [inputToken.address, outputToken.address],
+          types: ['address', 'address', 'address'],
+          path: [inputToken.address, pool.deployer, outputToken.address],
         };
       } else {
         return {
           inputToken: outputToken,
-          types: [...types, 'address'],
-          path: [...path, outputToken.address],
+          types: [...types, 'address', 'address'],
+          path: [...path, pool.deployer, outputToken.address],
         };
       }
     },
