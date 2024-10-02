@@ -67,7 +67,7 @@ export function computeCustomPoolAddress({
       [
         defaultAbiCoder.encode(
           ['address', 'address', 'address'],
-          [customPoolDeployer, token0.address, token1.address],
+          [customPoolDeployer.toLowerCase(), token0.address.toLowerCase(), token1.address.toLowerCase()],
         ),
       ],
     ),

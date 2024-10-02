@@ -227,16 +227,16 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
       calldatas.push(
         NonfungiblePositionManager.INTERFACE.encodeFunctionData('mint', [
           {
-            token0: position.pool.token0.address,
-            token1: position.pool.token1.address,
-            deployer: position.pool.deployer,
+            token0: position.pool.token0.address.toLowerCase(),
+            token1: position.pool.token1.address.toLowerCase(),
+            deployer: position.pool.deployer.toLowerCase(),
             tickLower: position.tickLower,
             tickUpper: position.tickUpper,
             amount0Desired: toHex(amount0Desired),
             amount1Desired: toHex(amount1Desired),
             amount0Min,
             amount1Min,
-            recipient,
+            recipient: recipient.toLowerCase(),
             deadline,
           },
         ]),
@@ -340,7 +340,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     if (options.permit) {
       calldatas.push(
         NonfungiblePositionManager.INTERFACE.encodeFunctionData('permit', [
-          validateAndParseAddress(options.permit.spender),
+          validateAndParseAddress(options.permit.spender).toLowerCase(),
           tokenId,
           toHex(options.permit.deadline),
           options.permit.v,
@@ -409,7 +409,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
   private static encodeCreate(pool: Pool, deployer: string): string {
     return NonfungiblePositionManager.INTERFACE.encodeFunctionData(
       'createAndInitializePoolIfNecessary',
-      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96)],
+      [pool.token0.address.toLowerCase(), pool.token1.address.toLowerCase(), deployer.toLowerCase(), toHex(pool.sqrtRatioX96)],
     );
   }
 
@@ -429,7 +429,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
       NonfungiblePositionManager.INTERFACE.encodeFunctionData('collect', [
         {
           tokenId,
-          recipient: involvesETH ? ADDRESS_ZERO : recipient,
+          recipient: involvesETH ? ADDRESS_ZERO.toLowerCase() : recipient.toLowerCase(),
           amount0Max: MaxUint128,
           amount1Max: MaxUint128,
         },
@@ -450,14 +450,14 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
       calldatas.push(
         NonfungiblePositionManager.INTERFACE.encodeFunctionData(
           'unwrapWNativeToken',
-          [toHex(ethAmount), recipient],
+          [toHex(ethAmount), recipient.toLowerCase()],
         ),
       );
       calldatas.push(
         NonfungiblePositionManager.INTERFACE.encodeFunctionData('sweepToken', [
-          token.address,
+          token.address.toLowerCase(),
           toHex(tokenAmount),
-          recipient,
+          recipient.toLowerCase(),
         ]),
       );
     }

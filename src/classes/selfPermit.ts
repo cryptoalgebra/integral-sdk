@@ -34,7 +34,7 @@ export abstract class SelfPermit {
   protected static encodePermit(token: Token, options: PermitOptions) {
     return isAllowedPermit(options)
       ? SelfPermit.INTERFACE.encodeFunctionData('selfPermitAllowed', [
-        token.address,
+        token.address.toLowerCase(),
         toHex(options.nonce),
         toHex(options.expiry),
         options.v,
@@ -42,7 +42,7 @@ export abstract class SelfPermit {
         options.s,
       ])
       : SelfPermit.INTERFACE.encodeFunctionData('selfPermit', [
-        token.address,
+        token.address.toLowerCase(),
         toHex(options.amount),
         toHex(options.deadline),
         options.v,

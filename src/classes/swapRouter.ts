@@ -172,10 +172,10 @@ export abstract class SwapRouter extends SelfPermit {
         if (singleHop) {
           if (trade.tradeType === TradeType.EXACT_INPUT) {
             const exactInputSingleParams = {
-              tokenIn: route.tokenPath[0].address,
-              tokenOut: route.tokenPath[1].address,
-              deployer: ADDRESS_ZERO,
-              recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
+              tokenIn: route.tokenPath[0].address.toLowerCase(),
+              tokenOut: route.tokenPath[1].address.toLowerCase(),
+              deployer: ADDRESS_ZERO.toLowerCase(),
+              recipient: routerMustCustody ? ADDRESS_ZERO.toLowerCase() : recipient.toLowerCase(),
               deadline,
               amountIn,
               amountOutMinimum: amountOut,
@@ -191,10 +191,10 @@ export abstract class SwapRouter extends SelfPermit {
             );
           } else {
             const exactOutputSingleParams = {
-              tokenIn: route.tokenPath[0].address,
-              tokenOut: route.tokenPath[1].address,
-              recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
-              deployer: ADDRESS_ZERO,
+              tokenIn: route.tokenPath[0].address.toLowerCase(),
+              tokenOut: route.tokenPath[1].address.toLowerCase(),
+              recipient: routerMustCustody ? ADDRESS_ZERO.toLowerCase() : recipient.toLowerCase(),
+              deployer: ADDRESS_ZERO.toLowerCase(),
               deadline,
               amountOut,
               amountInMaximum: amountIn,
@@ -221,7 +221,7 @@ export abstract class SwapRouter extends SelfPermit {
           if (trade.tradeType === TradeType.EXACT_INPUT) {
             const exactInputParams = {
               path,
-              recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
+              recipient: routerMustCustody ? ADDRESS_ZERO.toLowerCase() : recipient.toLowerCase(),
               deadline,
               amountIn,
               amountOutMinimum: amountOut,
@@ -235,7 +235,7 @@ export abstract class SwapRouter extends SelfPermit {
           } else {
             const exactOutputParams = {
               path,
-              recipient: routerMustCustody ? ADDRESS_ZERO : recipient,
+              recipient: routerMustCustody ? ADDRESS_ZERO.toLowerCase() : recipient.toLowerCase(),
               deadline,
               amountOut,
               amountInMaximum: amountIn,
@@ -262,17 +262,17 @@ export abstract class SwapRouter extends SelfPermit {
           calldatas.push(
             SwapRouter.INTERFACE.encodeFunctionData(
               'unwrapWNativeTokenWithFee',
-              [toHex(totalAmountOut.quotient), recipient, fee, feeRecipient],
+              [toHex(totalAmountOut.quotient), recipient.toLowerCase(), fee, feeRecipient.toLowerCase()],
             ),
           );
         } else {
           calldatas.push(
             SwapRouter.INTERFACE.encodeFunctionData('sweepTokenWithFee', [
-              sampleTrade.outputAmount.currency.wrapped.address,
+              sampleTrade.outputAmount.currency.wrapped.address.toLowerCase(),
               toHex(totalAmountOut.quotient),
-              recipient,
+              recipient.toLowerCase(),
               fee,
-              feeRecipient,
+              feeRecipient.toLowerCase(),
             ]),
           );
         }
@@ -280,7 +280,7 @@ export abstract class SwapRouter extends SelfPermit {
         calldatas.push(
           SwapRouter.INTERFACE.encodeFunctionData('unwrapWNativeToken', [
             toHex(totalAmountOut.quotient),
-            recipient,
+            recipient.toLowerCase(),
           ]),
         );
       }

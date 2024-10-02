@@ -32,13 +32,13 @@ export function encodeRouteToPath(
         return {
           inputToken: outputToken,
           types: ['address', 'address', 'address'],
-          path: [inputToken.address, ADDRESS_ZERO, outputToken.address],
+          path: [inputToken.address.toLowerCase(), ADDRESS_ZERO.toLowerCase(), outputToken.address.toLowerCase()],
         };
       } else {
         return {
           inputToken: outputToken,
           types: [...types, 'address', 'address'],
-          path: [...path, ADDRESS_ZERO , outputToken.address],
+          path: [...path, ADDRESS_ZERO.toLowerCase() , outputToken.address.toLowerCase()],
         };
       }
     },

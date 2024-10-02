@@ -32,7 +32,7 @@ export class Token extends AbstractCurrency {
     return (
       other.isToken &&
       this.chainId === other.chainId &&
-      this.address === other.address
+      this.address.toLowerCase() === other.address.toLowerCase()
     );
   }
 
@@ -44,7 +44,7 @@ export class Token extends AbstractCurrency {
    */
   public sortsBefore(other: Token): boolean {
     invariant(this.chainId === other.chainId, 'CHAIN_IDS');
-    invariant(this.address !== other.address, 'ADDRESSES');
+    invariant(this.address.toLowerCase() !== other.address.toLowerCase(), 'ADDRESSES');
     return this.address.toLowerCase() < other.address.toLowerCase();
   }
 
