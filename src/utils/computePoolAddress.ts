@@ -36,7 +36,7 @@ export function computePoolAddress({
       [
         defaultAbiCoder.encode(
           ['address', 'address'],
-          [token0.address, token1.address],
+          [token0.address.toLowerCase(), token1.address.toLowerCase()],
         ),
       ],
     ),
