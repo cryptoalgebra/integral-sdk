@@ -1,3 +1,3 @@
 export const ChainId = {
-    MorphHolesky: 2810
+    SuperseedSepolia: 53302
 }
