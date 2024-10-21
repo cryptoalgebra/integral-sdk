@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/whizzle-sdk",
+  "name": "@cryptoalgebra/archswap-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/whizzle-sdk.esm.js",
+  "module": "dist/archswap-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
