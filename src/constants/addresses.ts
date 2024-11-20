@@ -3,7 +3,7 @@ import { ChainId } from "./chainIds"
 export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.XLayer]: '0xEC250E6856e14A494cb1f0abC61d72348c79F418',
     [ChainId.XLayerTestnet]: '0xEC250E6856e14A494cb1f0abC61d72348c79F418',
-    [ChainId.SonicTestnet]: '0x38A5C36FA8c8c9E4649b51FCD61810B14e7ce047'
+    [ChainId.SonicTestnet]: '0x8AF2f4aF29431a4c21397e42A99eb16Df5887332'
 }
 
 export const POOL_INIT_CODE_HASH = {
