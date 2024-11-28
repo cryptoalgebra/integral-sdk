@@ -4,8 +4,8 @@ import { Currency, CurrencyAmount } from "../entities";
 
 const MIN_NATIVE_CURRENCY_FOR_GAS: JSBI = JSBI.exponentiate(
   JSBI.BigInt(10),
-  JSBI.BigInt(16),
-); // .01 ETH
+  JSBI.BigInt(14),
+); // .0001 ETH
 
 /**
  * Given some token amount, return the max that can be spent of it
