@@ -21,7 +21,7 @@ export const WNATIVE: { [chainId: number]: Token } = {
   ),
   [ChainId.SonicTestnet]: new Token(
     ChainId.SonicTestnet,
-    '0xb621330F2F6Fd60503969cfd87ed33B3Ee925E36',
+    '0x845e4145F7de2822d16FE233Ecd0181c61f1d65F',
     18,
     'WSonic',
     'Wrapped Sonic'
