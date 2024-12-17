@@ -5,11 +5,11 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.Holesky]: new Token(
-    ChainId.Holesky,
-    '0x94373a4919b3240d86ea41593d5eba789fef3848',
+  [ChainId.FChain]: new Token(
+    ChainId.FChain,
+    '0x91077c999344a0d5b2A745fA75403489EB374987',
     18,
-    'WETH',
-    'Wrapped ETH'
+    'WF',
+    'Wrapped F'
   )
 };
