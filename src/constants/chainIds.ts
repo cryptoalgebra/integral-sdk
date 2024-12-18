@@ -1,3 +1,3 @@
 export const ChainId = {
-    FChain: 1338,
+    Bitfinity: 355113,
 }
