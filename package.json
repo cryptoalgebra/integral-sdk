@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/fchain-sdk",
+  "name": "@cryptoalgebra/bitfinity-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/fchain-sdk.esm.js",
+  "module": "dist/bitfinity-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
