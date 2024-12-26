@@ -1,3 +1,3 @@
 export const ChainId = {
-    Fuse: 122,
+    PolygonMainnet: 137,
 }
