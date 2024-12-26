@@ -4,7 +4,7 @@ export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.XLayer]: '0xEC250E6856e14A494cb1f0abC61d72348c79F418',
     [ChainId.XLayerTestnet]: '0xEC250E6856e14A494cb1f0abC61d72348c79F418',
     [ChainId.SonicTestnet]: '0xf03875b5Ec5eAc83cab83A6c2ab17844304AA7a0',
-    [ChainId.SonicMainnet]: '0xc50C77deD1A75dC3b87211b961DBaF9d39387BD9',
+    [ChainId.SonicMainnet]: '0x885229E48987EA4c68F0aA1bCBff5184198A9188',
 }
 
 export const POOL_INIT_CODE_HASH = {
