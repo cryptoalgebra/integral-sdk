@@ -11,5 +11,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WMATIC',
     'Wrapped MATIC'
-  )
+  ),
+  [ChainId.PolygonAmoy]: new Token(
+    ChainId.PolygonAmoy,
+    '0xa5733b3a8e62a8faf43b0376d5faf46e89b3033e',
+    18,
+    'POL',
+    'Wrapped POL'
+  ),
 };
