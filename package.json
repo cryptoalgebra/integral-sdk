@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/clamm-base-sdk",
+  "name": "@cryptoalgebra/camelot-integral-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/clamm-base-sdk.esm.js",
+  "module": "dist/camelot-integral-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
