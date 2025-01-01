@@ -1,3 +1,3 @@
 export const ChainId = {
-    Base: 8453,
+    Arbitrum: 42161,
 }
