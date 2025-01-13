@@ -1,3 +1,3 @@
 export const ChainId = {
-    KakarotSepolia: 920637907288165,
+    BitlayerTestnet: 200810,
 }
