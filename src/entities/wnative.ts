@@ -11,5 +11,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WBTF',
     'Wrapped BTF'
+  ),
+  [ChainId.BitfinityMainnet]: new Token(
+    ChainId.BitfinityMainnet,
+    '0x4b6bcca9a8d707daca69485d14836779aed947e5',
+    18,
+    'WBTF',
+    'Wrapped BTF'
   )
 };
