@@ -12,4 +12,11 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WBERA',
     'WRAPPED BERA'
   ),
+  [ChainId.BerachainMainnet]: new Token(
+    ChainId.BerachainMainnet,
+    '0x6969696969696969696969696969696969696969',
+    18,
+    'WBERA',
+    'WRAPPED BERA'
+  ),
 };
