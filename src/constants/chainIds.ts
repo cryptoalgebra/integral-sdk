@@ -1,3 +1,3 @@
 export const ChainId = {
-    Holesky: 17000,
+    BerachainMainnet: 80094,
 }
