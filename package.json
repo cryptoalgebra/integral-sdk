@@ -33,7 +33,7 @@
   },
   "name": "@cryptoalgebra/yaka-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/treble-integral-sdk.esm.js",
+  "module": "dist/yaka-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
