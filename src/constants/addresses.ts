@@ -1,9 +1,9 @@
 import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.Arbitrum]: '0x34F74F5217D57223B51E51245769a89874c69bd2',
+    [ChainId.SeiTestnet]: '0x83D4a9Ea77a4dbA073cD90b30410Ac9F95F93E7C',
 }
 
 export const POOL_INIT_CODE_HASH = {
-    [ChainId.Arbitrum]: '0xb3fc09be5eb433d99b1ec89fd8435aaf5ffea75c1879e19028aa2414a14b3c85',
+    [ChainId.SeiTestnet]: '0xb3fc09be5eb433d99b1ec89fd8435aaf5ffea75c1879e19028aa2414a14b3c85',
 }

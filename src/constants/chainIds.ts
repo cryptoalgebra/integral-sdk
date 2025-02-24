@@ -1,3 +1,3 @@
 export const ChainId = {
-    Arbitrum: 42161,
+    SeiTestnet: 1328,
 }
