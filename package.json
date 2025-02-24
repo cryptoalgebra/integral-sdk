@@ -31,7 +31,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/treble-integral-sdk",
+  "name": "@cryptoalgebra/yaka-sdk",
   "author": "cryptoalgebra",
   "module": "dist/treble-integral-sdk.esm.js",
   "dependencies": {
