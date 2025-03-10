@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/thirdfy-integral-sdk",
+  "name": "@cryptoalgebra/atlas-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/thirdfy-integral-sdk.esm.js",
+  "module": "dist/atlas-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
