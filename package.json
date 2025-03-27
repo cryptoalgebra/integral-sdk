@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/fuse-sdk",
+  "name": "@cryptoalgebra/blackhole-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/fuse-sdk.esm.js",
+  "module": "dist/blackhole-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
