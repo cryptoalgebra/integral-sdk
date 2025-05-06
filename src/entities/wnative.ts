@@ -11,5 +11,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WETH',
     'Wrapped ETH'
-  )
+  ),
+  [ChainId.AvaxFuji]: new Token(
+    ChainId.AvaxFuji,
+    '0xb3B3CbEd8243682845C2ff23Ea1FD48e6144E34F',
+    18,
+    'WAVAX',
+    'Wrapped AVAX'
+  ),
 };
