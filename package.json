@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/hydrex-sdk",
+  "name": "@cryptoalgebra/prom-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/hydrex-sdk.esm.js",
+  "module": "dist/prom-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
