@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/prom-sdk",
+  "name": "@cryptoalgebra/satsuma-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/prom-sdk.esm.js",
+  "module": "dist/satsuma-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
