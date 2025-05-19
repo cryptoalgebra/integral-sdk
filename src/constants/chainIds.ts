@@ -1,3 +1,3 @@
 export const ChainId = {
-    PromMainnet: 227,
+    Citrea: 5115,
 }
