@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/satsuma-sdk",
+  "name": "@cryptoalgebra/zotto-neura-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/satsuma-sdk.esm.js",
+  "module": "dist/zotto-neura-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
