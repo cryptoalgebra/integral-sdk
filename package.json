@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/zotto-neura-sdk",
+  "name": "@cryptoalgebra/gliquid-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/zotto-neura-sdk.esm.js",
+  "module": "dist/gliquid-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
