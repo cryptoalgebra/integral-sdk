@@ -1,3 +1,3 @@
 export const ChainId = {
-    NeuraTestnet: 267,
+    HyperMainnet: 999,
 }
