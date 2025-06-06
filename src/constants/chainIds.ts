@@ -1,3 +1,3 @@
 export const ChainId = {
-    HyperMainnet: 999,
+    Ronin: 2020,
 }
