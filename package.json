@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/gliquid-sdk",
+  "name": "@cryptoalgebra/katana-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/gliquid-sdk.esm.js",
+  "module": "dist/katana-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
