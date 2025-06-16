@@ -12,4 +12,11 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WETH',
     'Wrapped ETH'
   ),
+  [ChainId.Base]: new Token(
+    ChainId.Base,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped ETH'
+  ),
 };
