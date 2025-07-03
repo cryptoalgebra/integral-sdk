@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/treble-integral-sdk",
+  "name": "@cryptoalgebra/babydoge-integral-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/treble-integral-sdk.esm.js",
+  "module": "dist/babydoge-integral-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
