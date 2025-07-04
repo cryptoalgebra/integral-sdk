@@ -12,4 +12,11 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WRON',
     'Wrapped RON'
   ),
+  [ChainId.SaigonTestnet]: new Token(
+    ChainId.SaigonTestnet,
+    '0x29c6f8349a028e1bdfc68bfa08bdee7bc5d47e16',
+    18,
+    'WRON',
+    'Wrapped RON'
+  ),
 };
