@@ -2,7 +2,7 @@ import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
     [ChainId.Ronin]: '0x13bbcA722f42652227D52141cBc97924DC9d3866',
-    [ChainId.SaigonTestnet]: '0xaE0872740c2844A0AC6C76A6955176FF392e4E02'
+    [ChainId.SaigonTestnet]: '0x9ea1d6422D4E6b025d92460C158BD4672c4C4993'
 }
 
 export const POOL_INIT_CODE_HASH = {
