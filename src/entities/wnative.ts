@@ -14,7 +14,7 @@ export const WNATIVE: { [chainId: number]: Token } = {
   ),
   [ChainId.SaigonTestnet]: new Token(
     ChainId.SaigonTestnet,
-    '0x29c6f8349a028e1bdfc68bfa08bdee7bc5d47e16',
+    '0xa959726154953bae111746e265e6d754f48570e6',
     18,
     'WRON',
     'Wrapped RON'
