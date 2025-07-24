@@ -30,6 +30,11 @@ export interface MintSpecificOptions {
    * Creates pool if not initialized before mint.
    */
   createPool?: boolean;
+  
+  /**
+   * Provides config data
+   */
+  data?: string;
 }
 
 export interface IncreaseSpecificOptions {
@@ -167,9 +172,9 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     super();
   }
 
-  public static createCallParameters(pool: Pool, deployer?: string): MethodParameters {
+  public static createCallParameters(pool: Pool, deployer?: string, data?: string): MethodParameters {
     return {
-      calldata: this.encodeCreate(pool, deployer || pool.deployer),
+      calldata: this.encodeCreate(pool, deployer || pool.deployer, data || '0x'),
       value: toHex(0),
     };
   }
@@ -198,7 +203,7 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
 
     // create pool if needed
     if (isMint(options) && options.createPool) {
-      calldatas.push(this.encodeCreate(position.pool, options.deployer || position.pool.deployer));
+      calldatas.push(this.encodeCreate(position.pool, options.deployer || position.pool.deployer, options.data || '0x'));
     }
 
     // permits if necessary
@@ -406,10 +411,10 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     };
   }
 
-  private static encodeCreate(pool: Pool, deployer: string): string {
+  private static encodeCreate(pool: Pool, deployer: string, data: string): string {
     return NonfungiblePositionManager.INTERFACE.encodeFunctionData(
       'createAndInitializePoolIfNecessary',
-      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96), '0x'],
+      [pool.token0.address, pool.token1.address, deployer, toHex(pool.sqrtRatioX96), data],
     );
   }
 
