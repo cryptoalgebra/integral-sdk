@@ -31,7 +31,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/kitten-sdk",
+  "name": "@cryptoalgebra/hx-finance-sdk",
   "author": "cryptoalgebra",
   "module": "dist/kitten-sdk.esm.js",
   "dependencies": {
