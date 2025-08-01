@@ -1,4 +1,3 @@
 export const ChainId = {
-    HyperEvmMainnet: 999,
-    BaseSepolia: 84532
+    TaraxaMainnet: 841,
 }
