@@ -1,3 +1,4 @@
 export const ChainId = {
-    HyperEvmTestnet: 998,
+    HyperEvmMainnet: 999,
+    BaseSepolia: 84532
 }
