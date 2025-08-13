@@ -1,3 +1,3 @@
 export const ChainId = {
-    TaraxaMainnet: 841,
+    KiteTestnet: 2368,
 }
