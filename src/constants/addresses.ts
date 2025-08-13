@@ -1,7 +1,7 @@
 import { ChainId } from './chainIds';
 
 export const POOL_DEPLOYER_ADDRESSES = {
-  [ChainId.HyperEvm]: '0x13E7EA93f9b9EA991549334e3f0a1ef46d7C2bFb',
+  [ChainId.HyperEvm]: '0x88813b47D2687ceA50DBfd644EeFE17294E10303',
 };
 
 export const POOL_INIT_CODE_HASH = {
