@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/fomo-sdk",
+  "name": "@cryptoalgebra/kiteai-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/fomo-sdk.esm.js",
+  "module": "dist/kiteai-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
