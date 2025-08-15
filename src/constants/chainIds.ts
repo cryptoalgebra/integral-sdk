@@ -1,3 +1,3 @@
 export const ChainId = {
-  HyperEvm: 999,
+  TACMainnet: 239,
 };
