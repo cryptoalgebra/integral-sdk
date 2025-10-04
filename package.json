@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/lynex-tac-sdk",
+  "name": "@cryptoalgebra/lithos-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/lynex-tac-sdk.esm.js",
+  "module": "dist/lithos-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
