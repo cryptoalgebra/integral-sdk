@@ -12,4 +12,11 @@ export const WNATIVE: { [chainId: number]: Token } = {
     'WTAC',
     'Wrapped TAC'
   ),
+  [ChainId.PlasmaMainnet]: new Token(
+    ChainId.PlasmaMainnet,
+    '0x6100E367285b01F48D07953803A2d8dCA5D19873',
+    18,
+    'WXPL',
+    'Wrapped XPL'
+  ),
 };
