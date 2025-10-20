@@ -1,4 +1,3 @@
 export const ChainId = {
-  TACMainnet: 239,
-  PlasmaMainnet: 9745
+  KiteTestnet: 2368
 };
