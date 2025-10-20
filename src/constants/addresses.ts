@@ -1,9 +1,9 @@
 import { ChainId } from "./chainIds"
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.MonadTestnet]: '0x51a744E9FEdb15842c3080d0937C99A365C6c358',
+    [ChainId.MonadTestnet]: '0x49af1aCbB203019f048E03c808D16F011BC1CA8F',
 }
 
 export const POOL_INIT_CODE_HASH = {
-    [ChainId.MonadTestnet]: '0xa18736c3ee97fe3c96c9428c0cc2a9116facec18e84f95f9da30543f8238a782',
+    [ChainId.MonadTestnet]: '0x62441ebe4e4315cf3d49d5957f94d66b253dbabe7006f34ad7f70947e60bf15c',
 }
