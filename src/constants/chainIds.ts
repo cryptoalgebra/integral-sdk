@@ -1,3 +1,3 @@
 export const ChainId = {
-    MonadTestnet: 10143,
+    SophonOSTestnet: 531050204
 }
