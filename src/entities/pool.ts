@@ -11,6 +11,7 @@ import { Tick, TickConstructorArgs } from './tick';
 import { NoTickDataProvider, TickDataProvider } from './tickDataProvider';
 import { TickListDataProvider } from './tickListDataProvider';
 import { POOL_DEPLOYER_ADDRESSES } from "../constants";
+import { BoostedToken } from './boostedToken';
 
 interface StepComputations {
   sqrtPriceStartX96: JSBI;
@@ -31,8 +32,8 @@ const NO_TICK_DATA_PROVIDER_DEFAULT = new NoTickDataProvider();
  * Represents a V3 pool
  */
 export class Pool {
-  public readonly token0: Token;
-  public readonly token1: Token;
+  public readonly token0: Token | BoostedToken;
+  public readonly token1: Token | BoostedToken;
   public readonly fee: number;
   public readonly sqrtRatioX96: JSBI;
   public readonly deployer: string;
