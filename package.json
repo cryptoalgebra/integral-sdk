@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/sophon-os-sdk",
+  "name": "@cryptoalgebra/rayls-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/sophon-os-sdk.esm.js",
+  "module": "dist/rayls-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
