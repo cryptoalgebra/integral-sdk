@@ -4,7 +4,6 @@ import {
   Fraction,
   Percent,
   Price,
-  Token,
 } from '../entities';
 import { sortedInsert } from '../utils/sortedInsert';
 import { TradeType } from '../enums/tradeType';
@@ -12,6 +11,7 @@ import invariant from 'tiny-invariant';
 import { ONE, ZERO } from '../constants';
 import { Pool } from './pool';
 import { Route } from './route';
+import { AnyToken } from '../types';
 
 /**
  * Trades comparator, an extension of the input output comparator that also considers other dimensions of the trade in ranking them
@@ -329,7 +329,7 @@ export class Trade<
       : CurrencyAmount<TOutput>,
     tradeType: TTradeType,
   ): Promise<Trade<TInput, TOutput, TTradeType>> {
-    const amounts: CurrencyAmount<Token>[] = new Array(route.tokenPath.length);
+    const amounts: CurrencyAmount<AnyToken>[] = new Array(route.tokenPath.length);
     let inputAmount: CurrencyAmount<TInput>;
     let outputAmount: CurrencyAmount<TOutput>;
     if (tradeType === TradeType.EXACT_INPUT) {
@@ -406,7 +406,7 @@ export class Trade<
     }[] = [];
 
     for (const { route, amount } of routes) {
-      const amounts: CurrencyAmount<Token>[] = new Array(
+      const amounts: CurrencyAmount<AnyToken>[] = new Array(
         route.tokenPath.length,
       );
       let inputAmount: CurrencyAmount<TInput>;
@@ -572,7 +572,7 @@ export class Trade<
       )
         continue;
 
-      let amountOut: CurrencyAmount<Token>;
+      let amountOut: CurrencyAmount<AnyToken>;
       try {
         [amountOut] = await pool.getOutputAmount(amountIn);
       } catch (_error) {
@@ -670,7 +670,7 @@ export class Trade<
       )
         continue;
 
-      let amountIn: CurrencyAmount<Token>;
+      let amountIn: CurrencyAmount<AnyToken>;
       try {
         [amountIn] = await pool.getInputAmount(amountOut);
       } catch (_error) {

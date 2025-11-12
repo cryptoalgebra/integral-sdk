@@ -15,5 +15,5 @@ export * from './Native';
 export * from './Fraction';
 export * from './ExtendedNative';
 export * from './wnative';
-export * from './boostedToken';
-export * from './boostedRoute';
+export * from './BoostedToken';
+export * from './BoostedRoute';

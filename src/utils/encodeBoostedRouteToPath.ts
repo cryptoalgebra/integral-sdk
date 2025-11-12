@@ -1,9 +1,7 @@
 import { pack } from '@ethersproject/solidity';
 import { Pool } from '../entities/pool';
-import { Currency, Token } from '../entities';
-import { BoostedRoute } from '../entities/boostedRoute';
-import { BoostedToken } from '../entities/boostedToken';
-import { isBoostedToken } from './isBoostedToken';
+import { BoostedRoute, Currency } from '../entities';
+import { AnyToken } from '../types';
 
 /**
  * Converts a route to a hex encoded path
@@ -14,7 +12,7 @@ export function encodeBoostedRouteToPath(
   route: BoostedRoute<Currency, Currency>,
   exactOutput: boolean
 ): string {
-  const firstInputToken: Token = route.input.wrapped; // underlying
+  const firstInputToken: AnyToken = route.input.wrapped;
 
   const { path, types } = route.pools.reduce(
     (
@@ -22,23 +20,27 @@ export function encodeBoostedRouteToPath(
         inputToken,
         path,
         types,
-      }: { inputToken: Token; path: (string | number)[]; types: string[] },
+      }: {
+        inputToken: AnyToken;
+        path: (string | number)[];
+        types: string[];
+      },
       pool: Pool,
       index
-    ): { inputToken: Token; path: (string | number)[]; types: string[] } => {
-      const isToken0Boosted = isBoostedToken(pool.token0);
-
-      const inputTokenFromPool: Token | BoostedToken =
+    ): {
+      inputToken: AnyToken;
+      path: (string | number)[];
+      types: string[];
+    } => {
+      const inputTokenFromPool: AnyToken =
         pool.token0.equals(inputToken) ||
-        (isToken0Boosted &&
-          (pool.token0 as BoostedToken).underlying.equals(inputToken))
+        (pool.token0.isBoosted && pool.token0.underlying.equals(inputToken))
           ? pool.token0
           : pool.token1;
 
-      const outputTokenFromPool: Token | BoostedToken =
+      const outputTokenFromPool: AnyToken =
         pool.token0.equals(inputToken) ||
-        (isToken0Boosted &&
-          (pool.token0 as BoostedToken).underlying.equals(inputToken))
+        (pool.token0.isBoosted && pool.token0.underlying.equals(inputToken))
           ? pool.token1
           : pool.token0;
 

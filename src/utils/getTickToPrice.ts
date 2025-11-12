@@ -1,11 +1,12 @@
-import { Price, Token } from '../entities';
+import { Price } from '../entities';
+import { AnyToken } from '../types';
 import { tickToPrice } from './priceTickConversions';
 
 export function getTickToPrice(
-  baseToken?: Token,
-  quoteToken?: Token,
-  tick?: number,
-): Price<Token, Token> | undefined {
+  baseToken?: AnyToken,
+  quoteToken?: AnyToken,
+  tick?: number
+): Price<AnyToken, AnyToken> | undefined {
   if (!baseToken || !quoteToken || typeof tick !== 'number') {
     return undefined;
   }

@@ -3,7 +3,7 @@ import _Big from 'big.js';
 //@ts-expect-error
 import toFormat from 'toformat';
 
-import { BigintIsh } from "../types/BigIntish";
+import { BigintIsh } from '../types/BigIntish';
 import { Currency } from './Currency';
 import { Fraction } from './Fraction';
 import JSBI from 'jsbi';
@@ -11,6 +11,7 @@ import { MaxUint256 } from '../constants/internalConstants';
 import { Rounding } from '../enums/rounding';
 import { Token } from './Token';
 import invariant from 'tiny-invariant';
+import { AnyToken } from '../types';
 
 const Big = toFormat(_Big);
 
@@ -25,7 +26,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
    */
   public static fromRawAmount<T extends Currency>(
     currency: T,
-    rawAmount: BigintIsh,
+    rawAmount: BigintIsh
   ): CurrencyAmount<T> {
     return new CurrencyAmount(currency, rawAmount);
   }
@@ -39,7 +40,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
   public static fromFractionalAmount<T extends Currency>(
     currency: T,
     numerator: BigintIsh,
-    denominator: BigintIsh,
+    denominator: BigintIsh
   ): CurrencyAmount<T> {
     return new CurrencyAmount(currency, numerator, denominator);
   }
@@ -47,14 +48,14 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
   protected constructor(
     currency: T,
     numerator: BigintIsh,
-    denominator?: BigintIsh,
+    denominator?: BigintIsh
   ) {
     super(numerator, denominator);
     invariant(JSBI.lessThanOrEqual(this.quotient, MaxUint256), 'AMOUNT');
     this.currency = currency;
     this.decimalScale = JSBI.exponentiate(
       JSBI.BigInt(10),
-      JSBI.BigInt(currency.decimals),
+      JSBI.BigInt(currency.decimals)
     );
   }
 
@@ -64,7 +65,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     return CurrencyAmount.fromFractionalAmount(
       this.currency,
       added.numerator,
-      added.denominator,
+      added.denominator
     );
   }
 
@@ -74,7 +75,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     return CurrencyAmount.fromFractionalAmount(
       this.currency,
       subtracted.numerator,
-      subtracted.denominator,
+      subtracted.denominator
     );
   }
 
@@ -83,7 +84,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     return CurrencyAmount.fromFractionalAmount(
       this.currency,
       multiplied.numerator,
-      multiplied.denominator,
+      multiplied.denominator
     );
   }
 
@@ -92,14 +93,14 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     return CurrencyAmount.fromFractionalAmount(
       this.currency,
       divided.numerator,
-      divided.denominator,
+      divided.denominator
     );
   }
 
   public toSignificant(
     significantDigits: number = 6,
     format?: object,
-    rounding: Rounding = Rounding.ROUND_DOWN,
+    rounding: Rounding = Rounding.ROUND_DOWN
   ): string {
     return super
       .divide(this.decimalScale)
@@ -109,7 +110,7 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
   public toFixed(
     decimalPlaces: number = this.currency.decimals,
     format?: object,
-    rounding: Rounding = Rounding.ROUND_DOWN,
+    rounding: Rounding = Rounding.ROUND_DOWN
   ): string {
     invariant(decimalPlaces <= this.currency.decimals, 'DECIMALS');
     return super
@@ -124,12 +125,12 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
       .toFormat(format);
   }
 
-  public get wrapped(): CurrencyAmount<Token> {
+  public get wrapped(): CurrencyAmount<AnyToken> {
     if (this.currency.isToken) return this as CurrencyAmount<Token>;
     return CurrencyAmount.fromFractionalAmount(
       this.currency.wrapped,
       this.numerator,
-      this.denominator,
+      this.denominator
     );
   }
 }

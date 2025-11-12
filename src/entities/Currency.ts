@@ -1,4 +1,4 @@
+import { AnyToken } from '../types';
 import NativeCurrency from './NativeCurrency';
-import { Token } from './Token';
 
-export type Currency = NativeCurrency | Token;
+export type Currency = NativeCurrency | AnyToken;

@@ -1,11 +1,10 @@
 import invariant from 'tiny-invariant';
 import JSBI from 'jsbi';
-import { BoostedToken } from './boostedToken';
 import { Currency } from './Currency';
 import { Pool } from './pool';
 import { Price } from './Price';
-import { Token } from './Token';
-import { isBoostedToken } from '../utils/isBoostedToken';
+import { BoostedToken } from './BoostedToken';
+import { AnyToken } from '../types';
 
 /**
  * Represents a list of pools through which a boosted swap can occur
@@ -13,10 +12,10 @@ import { isBoostedToken } from '../utils/isBoostedToken';
  */
 export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
   public readonly pools: Pool[];
-  public readonly tokenPath: (Token | BoostedToken)[];
+  public readonly tokenPath: AnyToken[];
   public readonly input: TInput;
   public readonly output: TOutput;
-  public readonly isBoosted = true as const;
+  public readonly isBoosted: true = true;
 
   public constructor(pools: Pool[], input: TInput, output: TOutput) {
     const wrappedInput = input.wrapped;
@@ -28,8 +27,8 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     // ═══════════════════════════════════════════════════════════
     if (
       pools.length === 0 &&
-      isBoostedToken(wrappedOutput) &&
-      !isBoostedToken(wrappedInput)
+      wrappedOutput.isBoosted &&
+      !wrappedInput.isBoosted
     ) {
       invariant(
         wrappedOutput.underlying.equals(wrappedInput),
@@ -49,8 +48,8 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     // ═══════════════════════════════════════════════════════════
     if (
       pools.length === 0 &&
-      isBoostedToken(wrappedInput) &&
-      !isBoostedToken(wrappedOutput)
+      wrappedInput.isBoosted &&
+      !wrappedOutput.isBoosted
     ) {
       invariant(
         wrappedInput.underlying.equals(wrappedOutput),
@@ -77,21 +76,19 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     const allOnSameChain = pools.every(pool => pool.chainId === chainId);
     invariant(allOnSameChain, 'CHAIN_IDS');
 
-    const tokenPath: (Token | BoostedToken)[] = [];
-    let currentToken: Token | BoostedToken = wrappedInput;
+    const tokenPath: AnyToken[] = [];
+    let currentToken: AnyToken = wrappedInput;
 
     // Check if we need to wrap input
     const firstPool = pools[0];
     const firstInvolvesBoosted =
-      isBoostedToken(firstPool.token0) || isBoostedToken(firstPool.token1);
+      firstPool.token0.isBoosted || firstPool.token1.isBoosted;
 
-    if (!isBoostedToken(wrappedInput) && firstInvolvesBoosted) {
+    if (!wrappedInput.isBoosted && firstInvolvesBoosted) {
       // Find matching boosted token in first pool
       const boosted = [firstPool.token0, firstPool.token1].find(
-        t =>
-          isBoostedToken(t) &&
-          (t as BoostedToken).underlying.equals(currentToken)
-      ) as BoostedToken | undefined;
+        t => t.isBoosted && t.underlying.equals(currentToken)
+      );
 
       if (boosted) {
         tokenPath.push(currentToken); // underlying
@@ -116,8 +113,8 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     // Check if we need to unwrap output
     const lastToken = tokenPath[tokenPath.length - 1];
     if (
-      isBoostedToken(lastToken) &&
-      !isBoostedToken(wrappedOutput) &&
+      lastToken.isBoosted &&
+      !wrappedOutput.isBoosted &&
       lastToken.underlying.equals(wrappedOutput)
     ) {
       tokenPath.push(lastToken.underlying);
@@ -174,8 +171,8 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     // Check if there's a wrap step at the beginning
     const hasWrapAtStart =
       this.tokenPath.length > 1 &&
-      !isBoostedToken(this.tokenPath[0]) &&
-      isBoostedToken(this.tokenPath[1]);
+      !this.tokenPath[0].isBoosted &&
+      this.tokenPath[1].isBoosted;
 
     if (hasWrapAtStart) {
       pathIndex = 1; // Start from wrapped token
@@ -224,8 +221,7 @@ export class BoostedRoute<TInput extends Currency, TOutput extends Currency> {
     // Check if there's an unwrap step at the end
     const lastToken = this.tokenPath[this.tokenPath.length - 1];
     const secondLastToken = this.tokenPath[this.tokenPath.length - 2];
-    const hasUnwrapAtEnd =
-      isBoostedToken(secondLastToken) && !isBoostedToken(lastToken);
+    const hasUnwrapAtEnd = secondLastToken.isBoosted && !lastToken.isBoosted;
 
     // Adjust for output unwrap if present
     if (hasUnwrapAtEnd) {

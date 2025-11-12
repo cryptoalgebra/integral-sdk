@@ -1,7 +1,8 @@
 import invariant from 'tiny-invariant';
 
-import { Currency, Price, Token } from '../entities';
+import { Currency, Price } from '../entities';
 import { Pool } from './pool';
+import { AnyToken } from '../types';
 
 /**
  * Represents a list of pools through which a swap can occur
@@ -10,9 +11,10 @@ import { Pool } from './pool';
  */
 export class Route<TInput extends Currency, TOutput extends Currency> {
   public readonly pools: Pool[];
-  public readonly tokenPath: Token[];
+  public readonly tokenPath: AnyToken[];
   public readonly input: TInput;
   public readonly output: TOutput;
+  public readonly isBoosted: false = false;
 
   /**
    * Creates an instance of route.
@@ -35,13 +37,13 @@ export class Route<TInput extends Currency, TOutput extends Currency> {
     /**
      * Normalizes token0-token1 order and selects the next token/fee step to add to the path
      * */
-    const tokenPath: Token[] = [wrappedInput];
+    const tokenPath: AnyToken[] = [wrappedInput];
     for (const [i, pool] of pools.entries()) {
       const currentInputToken = tokenPath[i];
       invariant(
         currentInputToken.equals(pool.token0) ||
-        currentInputToken.equals(pool.token1),
-        'PATH',
+          currentInputToken.equals(pool.token1),
+        'PATH'
       );
       const nextToken = currentInputToken.equals(pool.token0)
         ? pool.token1
@@ -67,30 +69,30 @@ export class Route<TInput extends Currency, TOutput extends Currency> {
       ({ nextInput, price }, pool) => {
         return nextInput.equals(pool.token0)
           ? {
-            nextInput: pool.token1,
-            price: price.multiply(pool.token0Price),
-          }
+              nextInput: pool.token1,
+              price: price.multiply(pool.token0Price),
+            }
           : {
-            nextInput: pool.token0,
-            price: price.multiply(pool.token1Price),
-          };
+              nextInput: pool.token0,
+              price: price.multiply(pool.token1Price),
+            };
       },
       this.pools[0].token0.equals(this.input.wrapped)
         ? {
-          nextInput: this.pools[0].token1,
-          price: this.pools[0].token0Price,
-        }
+            nextInput: this.pools[0].token1,
+            price: this.pools[0].token0Price,
+          }
         : {
-          nextInput: this.pools[0].token0,
-          price: this.pools[0].token1Price,
-        },
+            nextInput: this.pools[0].token0,
+            price: this.pools[0].token1Price,
+          }
     ).price;
 
     return (this._midPrice = new Price(
       this.input,
       this.output,
       price.denominator,
-      price.numerator,
+      price.numerator
     ));
   }
 

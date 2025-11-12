@@ -2,10 +2,11 @@ import { defaultAbiCoder } from '@ethersproject/abi';
 import { getAddress, getCreate2Address } from '@ethersproject/address';
 import { keccak256 } from '@ethersproject/solidity';
 import { keccak256 as keccak256BytesOnly } from '@ethersproject/keccak256';
-import { BytesLike, zeroPad, concat } from "@ethersproject/bytes";
-import { toUtf8Bytes } from "@ethersproject/strings"
+import { BytesLike, zeroPad, concat } from '@ethersproject/bytes';
+import { toUtf8Bytes } from '@ethersproject/strings';
 import { Token } from '../entities';
-import { POOL_DEPLOYER_ADDRESSES, POOL_INIT_CODE_HASH } from "../constants";
+import { POOL_DEPLOYER_ADDRESSES, POOL_INIT_CODE_HASH } from '../constants';
+import { AnyToken } from '../types';
 
 /**
  * Computes a pool address
@@ -19,10 +20,10 @@ export function computePoolAddress({
   tokenA,
   tokenB,
   initCodeHashManualOverride,
-  poolDeployer
+  poolDeployer,
 }: {
-  tokenA: Token;
-  tokenB: Token;
+  tokenA: AnyToken;
+  tokenB: AnyToken;
   initCodeHashManualOverride?: string;
   poolDeployer?: string;
 }): string {
@@ -36,11 +37,11 @@ export function computePoolAddress({
       [
         defaultAbiCoder.encode(
           ['address', 'address'],
-          [token0.address, token1.address],
+          [token0.address, token1.address]
         ),
-      ],
+      ]
     ),
-    initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId],
+    initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId]
   );
 }
 
@@ -49,10 +50,10 @@ export function computeCustomPoolAddress({
   tokenB,
   customPoolDeployer,
   initCodeHashManualOverride,
-  mainPoolDeployer
+  mainPoolDeployer,
 }: {
-  tokenA: Token;
-  tokenB: Token;
+  tokenA: AnyToken;
+  tokenB: AnyToken;
   customPoolDeployer: string;
   initCodeHashManualOverride?: string;
   mainPoolDeployer?: string;
@@ -67,11 +68,11 @@ export function computeCustomPoolAddress({
       [
         defaultAbiCoder.encode(
           ['address', 'address', 'address'],
-          [customPoolDeployer, token0.address, token1.address],
+          [customPoolDeployer, token0.address, token1.address]
         ),
-      ],
+      ]
     ),
-    initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId],
+    initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId]
   );
 }
 
@@ -81,25 +82,45 @@ export function computePoolAddressZkSync({
   tokenB,
   initCodeHashManualOverride,
 }: {
-  tokenA: Token
-  tokenB: Token
-  initCodeHashManualOverride?: string
-  poolDeployer?: string
+  tokenA: Token;
+  tokenB: Token;
+  initCodeHashManualOverride?: string;
+  poolDeployer?: string;
 }): string {
-  const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+  const [token0, token1] = tokenA.sortsBefore(tokenB)
+    ? [tokenA, tokenB]
+    : [tokenB, tokenA]; // does safety checks
   return getCreate2AddressZk(
     poolDeployer ?? POOL_DEPLOYER_ADDRESSES[tokenA.chainId],
-    keccak256(['bytes'], [defaultAbiCoder.encode(['address', 'address'], [token0.address, token1.address])]),
+    keccak256(
+      ['bytes'],
+      [
+        defaultAbiCoder.encode(
+          ['address', 'address'],
+          [token0.address, token1.address]
+        ),
+      ]
+    ),
     initCodeHashManualOverride ?? POOL_INIT_CODE_HASH[tokenA.chainId]
-  )
+  );
 }
 
-function getCreate2AddressZk(from: string, salt: BytesLike, initCodeHash: BytesLike): string {
+function getCreate2AddressZk(
+  from: string,
+  salt: BytesLike,
+  initCodeHash: BytesLike
+): string {
+  const prefix = keccak256BytesOnly(toUtf8Bytes('zksyncCreate2'));
 
-  const prefix = keccak256BytesOnly(toUtf8Bytes('zksyncCreate2'))
+  const addressBytes = keccak256BytesOnly(
+    concat([
+      prefix,
+      zeroPad(from, 32),
+      salt,
+      initCodeHash,
+      '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470',
+    ])
+  ).slice(26);
 
-  const addressBytes = keccak256BytesOnly(concat([prefix, zeroPad(from, 32), salt, initCodeHash, '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470'])).slice(26)
-
-  return getAddress(addressBytes)
-
+  return getAddress(addressBytes);
 }

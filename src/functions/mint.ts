@@ -1,66 +1,71 @@
 import JSBI from 'jsbi';
-import { Price, Token } from "../entities";
-import { TickMath, encodeSqrtRatioX96, nearestUsableTick, priceToClosestTick } from "../utils";
+import { Price } from '../entities';
+import {
+  TickMath,
+  encodeSqrtRatioX96,
+  nearestUsableTick,
+  priceToClosestTick,
+} from '../utils';
+import { AnyToken } from '../types';
 
 export function tryParsePrice(
-    baseToken?: Token,
-    quoteToken?: Token,
-    value?: string,
+  baseToken?: AnyToken,
+  quoteToken?: AnyToken,
+  value?: string
 ) {
-    if (!baseToken || !quoteToken || !value) {
-        return undefined;
-    }
+  if (!baseToken || !quoteToken || !value) {
+    return undefined;
+  }
 
-    if (!value.match(/^\d*\.?\d+$/)) {
-        return undefined;
-    }
+  if (!value.match(/^\d*\.?\d+$/)) {
+    return undefined;
+  }
 
-    const [whole, fraction] = value.split('.');
+  const [whole, fraction] = value.split('.');
 
-    const decimals = fraction?.length ?? 0;
-    const withoutDecimals = JSBI.BigInt((whole ?? '') + (fraction ?? ''));
+  const decimals = fraction?.length ?? 0;
+  const withoutDecimals = JSBI.BigInt((whole ?? '') + (fraction ?? ''));
 
-    return new Price(
-        baseToken,
-        quoteToken,
-        JSBI.multiply(
-            JSBI.BigInt(10 ** decimals),
-            JSBI.BigInt(10 ** baseToken.decimals),
-        ),
-        JSBI.multiply(withoutDecimals, JSBI.BigInt(10 ** quoteToken.decimals)),
-    );
+  return new Price(
+    baseToken,
+    quoteToken,
+    JSBI.multiply(
+      JSBI.BigInt(10 ** decimals),
+      JSBI.BigInt(10 ** baseToken.decimals)
+    ),
+    JSBI.multiply(withoutDecimals, JSBI.BigInt(10 ** quoteToken.decimals))
+  );
 }
 
 export function tryParseTick(
-    baseToken?: Token,
-    quoteToken?: Token,
-    value?: string,
-    tickSpacing?: number,
+  baseToken?: AnyToken,
+  quoteToken?: AnyToken,
+  value?: string,
+  tickSpacing?: number
 ): number | undefined {
+  if (!baseToken || !quoteToken || !value || !tickSpacing) {
+    return undefined;
+  }
 
-    if (!baseToken || !quoteToken || !value || !tickSpacing) {
-        return undefined;
-    }
+  const price = tryParsePrice(baseToken, quoteToken, value);
 
-    const price = tryParsePrice(baseToken, quoteToken, value);
+  if (!price) {
+    return undefined;
+  }
 
-    if (!price) {
-        return undefined;
-    }
+  let tick: number;
 
-    let tick: number;
+  // check price is within min/max bounds, if outside return min/max
+  const sqrtRatioX96 = encodeSqrtRatioX96(price.numerator, price.denominator);
 
-    // check price is within min/max bounds, if outside return min/max
-    const sqrtRatioX96 = encodeSqrtRatioX96(price.numerator, price.denominator);
+  if (JSBI.greaterThanOrEqual(sqrtRatioX96, TickMath.MAX_SQRT_RATIO)) {
+    tick = TickMath.MAX_TICK;
+  } else if (JSBI.lessThanOrEqual(sqrtRatioX96, TickMath.MIN_SQRT_RATIO)) {
+    tick = TickMath.MIN_TICK;
+  } else {
+    // this function is agnostic to the base, will always return the correct tick
+    tick = priceToClosestTick(price);
+  }
 
-    if (JSBI.greaterThanOrEqual(sqrtRatioX96, TickMath.MAX_SQRT_RATIO)) {
-        tick = TickMath.MAX_TICK;
-    } else if (JSBI.lessThanOrEqual(sqrtRatioX96, TickMath.MIN_SQRT_RATIO)) {
-        tick = TickMath.MIN_TICK;
-    } else {
-        // this function is agnostic to the base, will always return the correct tick
-        tick = priceToClosestTick(price);
-    }
-
-    return nearestUsableTick(tick, tickSpacing);
+  return nearestUsableTick(tick, tickSpacing);
 }

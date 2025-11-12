@@ -2,6 +2,7 @@ import { AbstractCurrency } from './AbstractCurrency';
 import { Currency } from './Currency';
 import invariant from 'tiny-invariant';
 import { validateAndParseAddress } from '../utils/validateAndParseAddress';
+import { AnyToken } from '../types';
 /**
  * Represents an ERC20 token with a unique address and some metadata.
  */
@@ -10,6 +11,7 @@ export class Token extends AbstractCurrency {
   public readonly address: string;
 
   public readonly isNative: false = false;
+  public readonly isBoosted: false = false;
   public readonly isToken: true = true;
 
   public constructor(
@@ -17,7 +19,7 @@ export class Token extends AbstractCurrency {
     address: string,
     decimals: number,
     symbol?: string,
-    name?: string,
+    name?: string
   ) {
     super(chainId, decimals, symbol, name);
     this.chainId = chainId;
@@ -42,7 +44,7 @@ export class Token extends AbstractCurrency {
    * @throws if the tokens have the same address
    * @throws if the tokens are on different chains
    */
-  public sortsBefore(other: Token): boolean {
+  public sortsBefore(other: AnyToken): boolean {
     invariant(this.chainId === other.chainId, 'CHAIN_IDS');
     invariant(this.address !== other.address, 'ADDRESSES');
     return this.address.toLowerCase() < other.address.toLowerCase();
@@ -61,7 +63,7 @@ export class Token extends AbstractCurrency {
  */
 export function currencyEquals(
   currencyA: Currency,
-  currencyB: Currency,
+  currencyB: Currency
 ): boolean {
   if (currencyA instanceof Token && currencyB instanceof Token) {
     return currencyA.equals(currencyB);

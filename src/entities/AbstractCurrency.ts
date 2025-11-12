@@ -1,5 +1,5 @@
+import { AnyToken } from '../types';
 import { Currency } from './Currency';
-import { Token } from './Token';
 import invariant from 'tiny-invariant';
 
 /**
@@ -14,6 +14,8 @@ export abstract class AbstractCurrency {
    * Returns whether the currency is a token that is usable without wrapping
    */
   public abstract readonly isToken: boolean;
+
+  public abstract readonly isBoosted: boolean;
 
   /**
    * The chain ID on which this currency resides
@@ -43,12 +45,12 @@ export abstract class AbstractCurrency {
     chainId: number,
     decimals: number,
     symbol?: string,
-    name?: string,
+    name?: string
   ) {
     invariant(Number.isSafeInteger(chainId), 'CHAIN_ID');
     invariant(
       decimals >= 0 && decimals < 255 && Number.isInteger(decimals),
-      'DECIMALS',
+      'DECIMALS'
     );
 
     this.chainId = chainId;
@@ -66,5 +68,5 @@ export abstract class AbstractCurrency {
   /**
    * Return the wrapped version of this currency.
    */
-  public abstract get wrapped(): Token;
+  public abstract get wrapped(): AnyToken;
 }
