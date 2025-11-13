@@ -132,4 +132,42 @@ export class BoostedToken extends AbstractCurrency {
       throw new Error('previewRedeem not implemented');
     }
   }
+
+  /**
+   * Helper
+   * Used to calculate how many vault shares would be needed to withdraw given assets.
+   */
+  public async previewWithdraw(assets: bigint): Promise<bigint> {
+    try {
+      // @ts-ignore
+      const result = await readContract(this.client, {
+        address: this.address as Address,
+        functionName: 'previewWithdraw',
+        args: [assets],
+        abi: erc4626Abi,
+      });
+      return result;
+    } catch (e) {
+      throw new Error('previewWithdraw not implemented');
+    }
+  }
+
+  /**
+   * Helper
+   * Used to calculate how many assets are required to mint given shares.
+   */
+  public async previewMint(shares: bigint): Promise<bigint> {
+    try {
+      // @ts-ignore
+      const result = await readContract(this.client, {
+        address: this.address as Address,
+        functionName: 'previewMint',
+        args: [shares],
+        abi: erc4626Abi,
+      });
+      return result;
+    } catch (e) {
+      throw new Error('previewMint not implemented');
+    }
+  }
 }
