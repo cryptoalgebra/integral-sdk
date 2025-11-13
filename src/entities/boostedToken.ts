@@ -49,7 +49,7 @@ export class BoostedToken extends AbstractCurrency {
       client ??
       createPublicClient({
         chain,
-        transport: http(chain.rpcUrls.default.http[0]) as any,
+        transport: http(chain.rpcUrls.default.http[0]),
       });
   }
 
