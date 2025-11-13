@@ -1,16 +1,16 @@
 import { readContract } from 'viem/actions';
-import { Address, Client, erc4626Abi } from 'viem';
+import { Address, Client, createPublicClient, erc4626Abi, http } from 'viem';
 import { validateAndParseAddress } from '../utils/validateAndParseAddress';
 import { Currency } from './Currency';
 import { AbstractCurrency } from './AbstractCurrency';
 import { Token } from './Token';
 import invariant from 'tiny-invariant';
 import { AnyToken } from '../types';
+import { CHAINS } from '../constants/viemChains';
 
 /**
  * Represents an ERC4626-wrapped token ("boosted token") that corresponds
  * to an underlying ERC20 token and adds vault-like behavior.
- *
  */
 export class BoostedToken extends AbstractCurrency {
   public readonly chainId: number;
@@ -24,19 +24,33 @@ export class BoostedToken extends AbstractCurrency {
   public readonly isToken: true = true;
   public readonly isNative: false = false;
 
+  public readonly client: Client;
+
   public constructor(
     chainId: number,
     address: string,
     decimals: number,
     symbol: string,
     name: string,
-    underlying: Token
+    underlying: Token,
+    client?: Client
   ) {
     super(chainId, decimals, symbol, name);
 
     this.chainId = chainId;
     this.address = validateAndParseAddress(address);
     this.underlying = underlying;
+
+    const chain = CHAINS[chainId];
+
+    invariant(chain, 'CHAIN_UNSUPPORTED');
+
+    this.client =
+      client ??
+      createPublicClient({
+        chain,
+        transport: http(chain.rpcUrls.default.http[0]) as any,
+      });
   }
 
   /**
@@ -85,10 +99,10 @@ export class BoostedToken extends AbstractCurrency {
    * Helper
    * Used to calculate how many vault shares would be received for given assets.
    */
-  public async previewDeposit(client: Client, assets: bigint): Promise<bigint> {
+  public async previewDeposit(assets: bigint): Promise<bigint> {
     try {
       // @ts-ignore
-      const result = await readContract(client, {
+      const result = await readContract(this.client, {
         address: this.address as Address,
         functionName: 'previewDeposit',
         args: [assets],
@@ -104,10 +118,10 @@ export class BoostedToken extends AbstractCurrency {
    * Helper
    * Used to calculate how many underlying assets would be received for given shares.
    */
-  public async previewRedeem(client: Client, shares: bigint): Promise<bigint> {
+  public async previewRedeem(shares: bigint): Promise<bigint> {
     try {
       // @ts-ignore
-      const result = await readContract(client, {
+      const result = await readContract(this.client, {
         address: this.address as Address,
         functionName: 'previewRedeem',
         args: [shares],
