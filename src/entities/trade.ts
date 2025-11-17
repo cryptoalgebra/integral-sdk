@@ -1,4 +1,5 @@
 import {
+  BoostedRoute,
   Currency,
   CurrencyAmount,
   Fraction,
@@ -97,7 +98,7 @@ export class Trade<
    * make up the trade.
    */
   public readonly swaps: {
-    route: Route<TInput, TOutput>;
+    route: Route<TInput, TOutput> | BoostedRoute<TInput, TOutput>;
     inputAmount: CurrencyAmount<TInput>;
     outputAmount: CurrencyAmount<TOutput>;
   }[];
@@ -116,7 +117,7 @@ export class Trade<
     tradeType,
   }: {
     routes: {
-      route: Route<TInput, TOutput>;
+      route: Route<TInput, TOutput> | BoostedRoute<TInput, TOutput>;
       inputAmount: CurrencyAmount<TInput>;
       outputAmount: CurrencyAmount<TOutput>;
     }[];
@@ -160,7 +161,7 @@ export class Trade<
    * When the trade consists of just a single route, this returns the route of the trade,
    * i.e. which pools the trade goes through.
    */
-  public get route(): Route<TInput, TOutput> {
+  public get route(): Route<TInput, TOutput> | BoostedRoute<TInput, TOutput> {
     invariant(this.swaps.length == 1, 'MULTIPLE_ROUTES');
     return this.swaps[0].route;
   }
@@ -485,7 +486,7 @@ export class Trade<
     TOutput extends Currency,
     TTradeType extends TradeType,
   >(constructorArguments: {
-    route: Route<TInput, TOutput>;
+    route: Route<TInput, TOutput> | BoostedRoute<TInput, TOutput>;
     inputAmount: CurrencyAmount<TInput>;
     outputAmount: CurrencyAmount<TOutput>;
     tradeType: TTradeType;
