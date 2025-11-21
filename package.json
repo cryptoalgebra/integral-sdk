@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/rayls-sdk",
+  "name": "@cryptoalgebra/mantra-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/rayls-sdk.esm.js",
+  "module": "dist/mantra-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
