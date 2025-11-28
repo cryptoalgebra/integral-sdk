@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/kiteswap-sdk",
+  "name": "@cryptoalgebra/maintegral-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/kiteswap-sdk.esm.js",
+  "module": "dist/maintegral-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
