@@ -1,4 +1,3 @@
 export const ChainId = {
-    Base: 8453,
-    BaseSepolia: 84532
+    Base: 8453
 }
