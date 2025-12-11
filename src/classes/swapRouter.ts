@@ -1,7 +1,7 @@
 import { Interface } from '@ethersproject/abi';
 import { BigintIsh } from '../types/BigIntish';
 import { validateAndParseAddress } from '../utils/validateAndParseAddress';
-import { Currency, CurrencyAmount, Percent } from '../entities';
+import { Currency, CurrencyAmount, Percent, Route } from '../entities';
 import { TradeType } from '../enums/tradeType';
 import invariant from 'tiny-invariant';
 import { Trade } from '../entities/trade';
@@ -214,7 +214,7 @@ export abstract class SwapRouter extends SelfPermit {
           );
 
           const path: string = encodeRouteToPath(
-            route,
+            route as Route<Currency, Currency>,
             trade.tradeType === TradeType.EXACT_OUTPUT,
           );
 

@@ -13,4 +13,3 @@ export * from './sqrtPriceMath';
 export * from './tickMath';
 export * from './tickList';
 export * from './getTickToPrice';
-export * from './encodeBoostedRouteToPath';

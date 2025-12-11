@@ -1,12 +1,9 @@
-import { readContract } from 'viem/actions';
-import { Address, Client, createPublicClient, erc4626Abi, http } from 'viem';
 import { validateAndParseAddress } from '../utils/validateAndParseAddress';
 import { Currency } from './Currency';
 import { AbstractCurrency } from './AbstractCurrency';
 import { Token } from './Token';
 import invariant from 'tiny-invariant';
 import { AnyToken } from '../types';
-import { CHAINS } from '../constants/viemChains';
 
 /**
  * Represents an ERC4626-wrapped token ("boosted token") that corresponds
@@ -24,33 +21,19 @@ export class BoostedToken extends AbstractCurrency {
   public readonly isToken: true = true;
   public readonly isNative: false = false;
 
-  public readonly client: Client;
-
   public constructor(
     chainId: number,
     address: string,
     decimals: number,
     symbol: string,
     name: string,
-    underlying: Token,
-    client?: Client
+    underlying: Token
   ) {
     super(chainId, decimals, symbol, name);
 
     this.chainId = chainId;
     this.address = validateAndParseAddress(address);
     this.underlying = underlying;
-
-    const chain = CHAINS[chainId];
-
-    invariant(chain, 'CHAIN_UNSUPPORTED');
-
-    this.client =
-      client ??
-      createPublicClient({
-        chain,
-        transport: http(chain.rpcUrls.default.http[0]),
-      });
   }
 
   /**
@@ -93,81 +76,5 @@ export class BoostedToken extends AbstractCurrency {
     invariant(this.chainId === other.chainId, 'CHAIN_IDS');
     invariant(this.address !== other.address, 'ADDRESSES');
     return this.address.toLowerCase() < other.address.toLowerCase();
-  }
-
-  /**
-   * Helper
-   * Used to calculate how many vault shares would be received for given assets.
-   */
-  public async previewDeposit(assets: bigint): Promise<bigint> {
-    try {
-      // @ts-ignore
-      const result = await readContract(this.client, {
-        address: this.address as Address,
-        functionName: 'previewDeposit',
-        args: [assets],
-        abi: erc4626Abi,
-      });
-      return result;
-    } catch (e) {
-      throw new Error('previewDeposit not implemented');
-    }
-  }
-
-  /**
-   * Helper
-   * Used to calculate how many underlying assets would be received for given shares.
-   */
-  public async previewRedeem(shares: bigint): Promise<bigint> {
-    try {
-      // @ts-ignore
-      const result = await readContract(this.client, {
-        address: this.address as Address,
-        functionName: 'previewRedeem',
-        args: [shares],
-        abi: erc4626Abi,
-      });
-      return result;
-    } catch (e) {
-      throw new Error('previewRedeem not implemented');
-    }
-  }
-
-  /**
-   * Helper
-   * Used to calculate how many vault shares would be needed to withdraw given assets.
-   */
-  public async previewWithdraw(assets: bigint): Promise<bigint> {
-    try {
-      // @ts-ignore
-      const result = await readContract(this.client, {
-        address: this.address as Address,
-        functionName: 'previewWithdraw',
-        args: [assets],
-        abi: erc4626Abi,
-      });
-      return result;
-    } catch (e) {
-      throw new Error('previewWithdraw not implemented');
-    }
-  }
-
-  /**
-   * Helper
-   * Used to calculate how many assets are required to mint given shares.
-   */
-  public async previewMint(shares: bigint): Promise<bigint> {
-    try {
-      // @ts-ignore
-      const result = await readContract(this.client, {
-        address: this.address as Address,
-        functionName: 'previewMint',
-        args: [shares],
-        abi: erc4626Abi,
-      });
-      return result;
-    } catch (e) {
-      throw new Error('previewMint not implemented');
-    }
   }
 }
