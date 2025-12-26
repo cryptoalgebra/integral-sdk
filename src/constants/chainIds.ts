@@ -1,3 +1,3 @@
 export const ChainId = {
-  BaseSepolia: 84532,
+  Henesys: 68414,
 };
