@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/skale-base-sdk",
+  "name": "@cryptoalgebra/citrea-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/skale-base-sdk.esm.js",
+  "module": "dist/citrea-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
