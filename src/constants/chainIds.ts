@@ -1,3 +1,3 @@
 export const ChainId = {
-  SkaleBase: 324705682
+  CitreaMainnet: 4114
 };
