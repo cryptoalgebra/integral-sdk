@@ -11,5 +11,12 @@ export const WNATIVE: { [chainId: number]: Token } = {
     18,
     'WCREDIT',
     'Wrapped CREDIT'
-  )
+  ),
+  [ChainId.SkaleSandbox]: new Token(
+    ChainId.SkaleSandbox,
+    '0xDeaD1F5aF792afc125812E875A891b038f888258',
+    18,
+    'WDEAD',
+    'Wrapped DEAD'
+  ),
 };
