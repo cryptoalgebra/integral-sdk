@@ -1,3 +1,4 @@
 export const ChainId = {
-  CitreaMainnet: 4114
+  MegaethTestnet: 6343,
+  MegaethMainnet: 4326
 };
