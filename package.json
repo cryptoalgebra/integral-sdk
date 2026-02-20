@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/paradox-sdk",
+  "name": "@cryptoalgebra/pharos-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/paradox-sdk.esm.js",
+  "module": "dist/pharos-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
