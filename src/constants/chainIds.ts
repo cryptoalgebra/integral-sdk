@@ -1,4 +1,3 @@
 export const ChainId = {
-  MegaethTestnet: 6343,
-  MegaethMainnet: 4326
+  PharosTestnet: 688689,
 };

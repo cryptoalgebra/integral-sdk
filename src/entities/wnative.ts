@@ -5,18 +5,11 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.MegaethMainnet]: new Token(
-    ChainId.MegaethMainnet,
-    '0x4200000000000000000000000000000000000006',
+  [ChainId.PharosTestnet]: new Token(
+    ChainId.PharosTestnet,
+    '0x838800b758277cc111b2d48ab01e5e164f8e9471',
     18,
-    'WETH',
-    'Wrapped ETH'
-  ),
-  [ChainId.MegaethTestnet]: new Token(
-    ChainId.MegaethTestnet,
-    '0x4200000000000000000000000000000000000006',
-    18,
-    'WETH',
-    'Wrapped ETH'
+    'WPHRS',
+    'Wrapped PHRS'
   ),
 };
