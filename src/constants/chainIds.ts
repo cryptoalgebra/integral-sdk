@@ -1,3 +1,4 @@
 export const ChainId = {
-  KiteTestnet: 2368
+  Kite: 2366,
+  KiteTestnet: 2368,
 };
