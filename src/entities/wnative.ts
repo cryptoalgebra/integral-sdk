@@ -14,9 +14,9 @@ export const WNATIVE: { [chainId: number]: Token } = {
   ),
   [ChainId.RaylsDevnet]: new Token(
     ChainId.RaylsDevnet,
-    '0x0000000000000000000000000000000000000400',
+    '0xf03875b5Ec5eAc83cab83A6c2ab17844304AA7a0',
     18,
-    'USDR',
-    'USD Rayls'
+    'WETH',
+    'Wrapped ETH'
   )
 };
