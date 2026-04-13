@@ -31,9 +31,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "@cryptoalgebra/citrea-sdk",
+  "name": "@cryptoalgebra/dna-sdk",
   "author": "cryptoalgebra",
-  "module": "dist/citrea-sdk.esm.js",
+  "module": "dist/dna-sdk.esm.js",
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",

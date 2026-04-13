@@ -1,3 +1,3 @@
 export const ChainId = {
-  CitreaMainnet: 4114
+  BSC: 4114,
 };

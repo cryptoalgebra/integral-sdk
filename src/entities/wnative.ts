@@ -5,11 +5,11 @@ import { Token } from './Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
-  [ChainId.CitreaMainnet]: new Token(
-    ChainId.CitreaMainnet,
-    '0x3100000000000000000000000000000000000006',
+  [ChainId.BSC]: new Token(
+    ChainId.BSC,
+    '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
     18,
-    'WCBTC',
-    'Wrapped Citrea Bitcoin'
-  )
+    'WBNB',
+    'Wrapped BNB'
+  ),
 };
