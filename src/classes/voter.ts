@@ -11,6 +11,7 @@ import { buildEpochDetails } from '../utils/buildEpochDetails';
 import { MethodParameters, toHex } from '../utils/calldata';
 import { toBigInt } from '../utils/toBigInt';
 import { validateAndParseAddress } from '../utils/validateAndParseAddress';
+import type { UserVoteSnapshot } from './veNFTLens';
 
 export interface VoteOptions {
   /**
@@ -39,6 +40,21 @@ export interface VoteStats {
 
 export interface PoolWeights {
   [poolAddress: string]: bigint;
+}
+
+export interface UserVoteStatus {
+  needsToVote: boolean;
+  hasVotingPower: boolean;
+  hasVotedForCurrentEpoch: boolean;
+  totalVotingPower: bigint;
+  manualVotingPower: bigint;
+  automatedVotingPower: bigint;
+}
+
+export interface UserVotePowerBreakdown {
+  totalVotingPower?: BigintIsh | bigint;
+  manualVotingPower?: BigintIsh | bigint;
+  automatedVotingPower?: BigintIsh | bigint;
 }
 
 /**
@@ -220,8 +236,12 @@ export abstract class Voter {
   }
 
   /**
-   * Returns the voter's current vote split by pool as percentages of their
-   * saved vote allocation. If no owner is provided, an empty result is returned.
+   * Returns a lightweight allocation view of the voter's current saved votes.
+   * This helper only reports the current split by pool and last-voted timestamp.
+   * Prefer the VeNFTLens vote snapshot when the caller needs a fuller user vote
+   * status model.
+   *
+   * If no owner is provided, an empty result is returned.
    * @param owner voter address to inspect
    * @param readContracts injected batch contract read function
    */
@@ -342,14 +362,62 @@ export abstract class Voter {
   }
 
   /**
+   * Derives a compact vote status summary from a richer vote snapshot.
+   *
+   * `snapshot.voted` means the user currently has active votes saved, while
+   * `hasVotedForCurrentEpoch` only means their most recent vote action happened
+   * during the current epoch.
+   *
+   * @param snapshot richer user vote snapshot, typically from VeNFTLens
+   * @param epochDetails derived epoch details for the current epoch
+   * @param votingPower optional voting power breakdown; defaults to treating the
+   *   snapshot's total voting power as manually managed
+   */
+  public static getUserVoteStatus(
+    snapshot: UserVoteSnapshot,
+    epochDetails: EpochDetails,
+    votingPower: UserVotePowerBreakdown = {},
+  ): UserVoteStatus {
+    const totalVotingPower =
+      votingPower.totalVotingPower !== undefined
+        ? toBigInt(votingPower.totalVotingPower)
+        : snapshot.rawVotingPower;
+    const automatedVotingPower =
+      votingPower.automatedVotingPower !== undefined
+        ? toBigInt(votingPower.automatedVotingPower)
+        : BigInt(0);
+    const manualVotingPower =
+      votingPower.manualVotingPower !== undefined
+        ? toBigInt(votingPower.manualVotingPower)
+        : totalVotingPower - automatedVotingPower;
+    const normalizedManualVotingPower =
+      manualVotingPower > BigInt(0) ? manualVotingPower : BigInt(0);
+    const hasVotedForCurrentEpoch = this.hasVotedForEpoch(
+      epochDetails,
+      snapshot.rawVoteTs,
+    );
+
+    return {
+      needsToVote:
+        normalizedManualVotingPower > BigInt(0) && !hasVotedForCurrentEpoch,
+      hasVotingPower: totalVotingPower > BigInt(0),
+      hasVotedForCurrentEpoch,
+      totalVotingPower,
+      manualVotingPower: normalizedManualVotingPower,
+      automatedVotingPower,
+    };
+  }
+
+  /**
    * Returns true if the provided last-voted timestamp falls within the current
-   * epoch.
+   * epoch. This is only a timestamp comparison and should not be used as a full
+   * current vote status check on its own.
    * @param epochDetails derived epoch details for the current epoch
    * @param lastVotedTimestamp optional last-voted timestamp to compare
    */
   public static hasVotedForEpoch(
     epochDetails: EpochDetails,
-    lastVotedTimestamp?: BigintIsh,
+    lastVotedTimestamp?: BigintIsh | bigint,
   ): boolean {
     if (lastVotedTimestamp === undefined) {
       return false;

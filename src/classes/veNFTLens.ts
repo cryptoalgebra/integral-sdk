@@ -1,4 +1,5 @@
 import { Interface } from '@ethersproject/abi';
+import { formatUnits } from '@ethersproject/units';
 import { veTokenLensABI } from '../abis/veTokenLens';
 import { ADDRESS_ZERO } from '../constants/constants';
 import { BigintIsh } from '../types/BigIntish';
@@ -24,6 +25,30 @@ export interface VeTokenLensReward {
 export interface VeNFTClaimable {
   fees: FeeClaimItem[];
   bribes: BribeClaimItem[];
+}
+
+export interface SnapshotVote {
+  pair: string;
+  weight: bigint;
+  weightFormatted: string;
+  percent: number;
+}
+
+export interface UserVoteSnapshot {
+  voted: boolean;
+  votingPower: string;
+  rawVotingPower: bigint;
+  earningPower: string;
+  rawEarningPower: bigint;
+  epochVotes: string;
+  rawEpochVotes: bigint;
+  nextEpochVotes: string;
+  rawNextEpochVotes: bigint;
+  nextEarningPower: string;
+  rawNextEarningPower: bigint;
+  voteTs: number;
+  rawVoteTs: bigint;
+  votes: SnapshotVote[];
 }
 
 /**
@@ -132,6 +157,27 @@ export abstract class VeNFTLens {
   }
 
   /**
+   * Reads the current vote snapshot for a user directly from VeTokenLens.
+   *
+   * This richer snapshot should be preferred when the caller needs the user's
+   * current saved votes, vote timestamp, and epoch-level voting totals in one read.
+   *
+   * @param owner wallet address to inspect
+   * @param readContract injected read function bound to the VeTokenLens contract
+   */
+  public static async getUserVoteSnapshot(
+    owner: string,
+    readContract: ReadContractFunction,
+  ): Promise<UserVoteSnapshot> {
+    const result = await readContract({
+      functionName: 'getVotesFromAddress',
+      args: [validateAndParseAddress(owner)],
+    });
+
+    return VeNFTLens.parseUserVoteSnapshot(result);
+  }
+
+  /**
    * Normalizes a raw VeTokenLens reward entry into the SDK reward shape.
    */
   private static parseReward(reward: unknown): VeTokenLensReward {
@@ -155,6 +201,78 @@ export abstract class VeNFTLens {
       fee: validateAndParseAddress(String(rawReward.fee)),
       bribe: validateAndParseAddress(String(rawReward.bribe)),
       symbol: String(rawReward.symbol),
+    };
+  }
+
+  /**
+   * Normalizes a raw VeTokenLens vote snapshot into the SDK vote snapshot shape.
+   */
+  private static parseUserVoteSnapshot(result: unknown): UserVoteSnapshot {
+    const rawResult = result as {
+      voted: unknown;
+      votingPower: unknown;
+      earningPower: unknown;
+      epochVotes: unknown;
+      nextEpochVotes: unknown;
+      nextEarningPower: unknown;
+      voteTs: unknown;
+      votes: unknown;
+    };
+    const rawVotingPower = toBigInt(rawResult.votingPower);
+    const rawEarningPower = toBigInt(rawResult.earningPower);
+    const rawEpochVotes = toBigInt(rawResult.epochVotes);
+    const rawNextEpochVotes = toBigInt(rawResult.nextEpochVotes);
+    const rawNextEarningPower = toBigInt(rawResult.nextEarningPower);
+    const rawVoteTs = toBigInt(rawResult.voteTs);
+    const parsedVotes = Array.isArray(rawResult.votes)
+      ? rawResult.votes.map(vote => VeNFTLens.parseSnapshotVote(vote))
+      : [];
+    const totalVoteWeight = parsedVotes.reduce(
+      (sum, vote) => sum + vote.weight,
+      BigInt(0),
+    );
+
+    return {
+      voted: Boolean(rawResult.voted) && parsedVotes.length > 0,
+      votingPower: formatUnits(rawVotingPower, 18),
+      rawVotingPower,
+      earningPower: formatUnits(rawEarningPower, 18),
+      rawEarningPower,
+      epochVotes: formatUnits(rawEpochVotes, 18),
+      rawEpochVotes,
+      nextEpochVotes: formatUnits(rawNextEpochVotes, 18),
+      rawNextEpochVotes,
+      nextEarningPower: formatUnits(rawNextEarningPower, 18),
+      rawNextEarningPower,
+      voteTs: Number(rawVoteTs),
+      rawVoteTs,
+      votes: parsedVotes.map(vote => ({
+        ...vote,
+        percent:
+          totalVoteWeight > BigInt(0)
+            ? Math.round(
+                (Number(vote.weight) / Number(totalVoteWeight)) * 10000,
+              ) / 100
+            : 0,
+      })),
+    };
+  }
+
+  /**
+   * Normalizes a raw vote row from VeTokenLens into the SDK vote row shape.
+   */
+  private static parseSnapshotVote(vote: unknown): SnapshotVote {
+    const rawVote = vote as {
+      pair: unknown;
+      weight: unknown;
+    };
+    const weight = toBigInt(rawVote.weight);
+
+    return {
+      pair: validateAndParseAddress(String(rawVote.pair)),
+      weight,
+      weightFormatted: formatUnits(weight, 18),
+      percent: 0,
     };
   }
 
