@@ -1,4 +1,3 @@
 export const ChainId = {
-    Rayls: 123123,
-    RaylsDevnet: 7295799
-}
+  RaylsMainnet: 72957,
+};

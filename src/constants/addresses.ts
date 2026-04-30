@@ -1,11 +1,10 @@
-import { ChainId } from "./chainIds"
+import { ChainId } from './chainIds';
 
 export const POOL_DEPLOYER_ADDRESSES = {
-    [ChainId.Rayls]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
-    [ChainId.RaylsDevnet]: '0xd9866Fc987AFCFc0C20b22a2B04b0574735032C5'
-}
+  [ChainId.RaylsMainnet]: '0x3012E9049d05B4B5369D690114D5A5861EbB85cb',
+};
 
 export const POOL_INIT_CODE_HASH = {
-    [ChainId.Rayls]: '0x62441ebe4e4315cf3d49d5957f94d66b253dbabe7006f34ad7f70947e60bf15c',
-    [ChainId.RaylsDevnet]: '0x62441ebe4e4315cf3d49d5957f94d66b253dbabe7006f34ad7f70947e60bf15c'
-}
+  [ChainId.RaylsMainnet]:
+    '0x62441ebe4e4315cf3d49d5957f94d66b253dbabe7006f34ad7f70947e60bf15c',
+};
