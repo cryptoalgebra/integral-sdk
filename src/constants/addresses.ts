@@ -1,7 +1,7 @@
 import { ChainId } from './chainIds';
 
 export const POOL_DEPLOYER_ADDRESSES = {
-  [ChainId.RaylsMainnet]: '0x3012E9049d05B4B5369D690114D5A5861EbB85cb',
+  [ChainId.RaylsMainnet]: '0xd7cB0E0692f2D55A17bA81c1fE5501D66774fC4A',
 };
 
 export const POOL_INIT_CODE_HASH = {
