@@ -228,9 +228,12 @@ export abstract class SwapRouter extends SelfPermit {
             };
 
             calldatas.push(
-              SwapRouter.INTERFACE.encodeFunctionData('exactInput', [
-                exactInputParams,
-              ]),
+              SwapRouter.INTERFACE.encodeFunctionData(
+                options.feeOnTransfer
+                  ? 'exactInputSupportingFeeOnTransferTokens'
+                  : 'exactInput',
+                [exactInputParams]
+              )
             );
           } else {
             const exactOutputParams = {
