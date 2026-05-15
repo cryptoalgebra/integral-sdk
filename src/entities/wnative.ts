@@ -7,9 +7,9 @@ import { Token } from './Token';
 export const WNATIVE: { [chainId: number]: Token } = {
   [ChainId.RaylsMainnet]: new Token(
     ChainId.RaylsMainnet,
-    '0xDeaD1F5aF792afc125812E875A891b038f888258', // no wrapped on mainnet
+    '0x0000000000000000000000000000000000000400', // native is the same as wrapped
     18,
-    'WETH',
-    'Wrapped ETH'
+    'USDr',
+    'USD Rayls'
   ),
 };
