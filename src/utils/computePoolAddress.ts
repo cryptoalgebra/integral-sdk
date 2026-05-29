@@ -5,7 +5,11 @@ import { keccak256 as keccak256BytesOnly } from '@ethersproject/keccak256';
 import { BytesLike, zeroPad, concat } from '@ethersproject/bytes';
 import { toUtf8Bytes } from '@ethersproject/strings';
 import { Token } from '../entities';
-import { POOL_DEPLOYER_ADDRESSES, POOL_INIT_CODE_HASH } from '../constants';
+import {
+  ADDRESS_ZERO,
+  POOL_DEPLOYER_ADDRESSES,
+  POOL_INIT_CODE_HASH,
+} from '../constants';
 import { AnyToken } from '../types';
 
 /**
@@ -45,6 +49,16 @@ export function computePoolAddress({
   );
 }
 
+/**
+ * Computes a custom pool address
+ * If the custom pool deployer is ADDRESS_ZERO, delegates to regular pool address computation
+ * @param tokenA The first token of the pair, irrespective of sort order
+ * @param tokenB The second token of the pair, irrespective of sort order
+ * @param customPoolDeployer The custom pool deployer address (AlgebraCustomPluginFactory)
+ * @param initCodeHashManualOverride The initial code hash override
+ * @param mainPoolDeployer The main pool deployer address override
+ * @returns The pool address
+ */
 export function computeCustomPoolAddress({
   tokenA,
   tokenB,
@@ -58,6 +72,15 @@ export function computeCustomPoolAddress({
   initCodeHashManualOverride?: string;
   mainPoolDeployer?: string;
 }): string {
+  if (customPoolDeployer === ADDRESS_ZERO) {
+    return computePoolAddress({
+      tokenA,
+      tokenB,
+      initCodeHashManualOverride,
+      poolDeployer: mainPoolDeployer,
+    });
+  }
+
   const [token0, token1] = tokenA.sortsBefore(tokenB)
     ? [tokenA, tokenB]
     : [tokenB, tokenA];
