@@ -321,13 +321,12 @@ export abstract class NonfungiblePositionManager extends SelfPermit {
     const tokenId = toHex(options.tokenId);
 
     // construct a partial position with a percentage of liquidity
-    const partialPosition = new Position({
-      pool: position.pool,
+    const partialPosition = Position.fromExistingPosition({
+      ...position,
       liquidity: options.liquidityPercentage.multiply(position.liquidity)
         .quotient,
-      tickLower: position.tickLower,
-      tickUpper: position.tickUpper,
     });
+    
     invariant(
       JSBI.greaterThan(partialPosition.liquidity, ZERO),
       'ZERO_LIQUIDITY',
