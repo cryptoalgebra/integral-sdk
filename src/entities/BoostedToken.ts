@@ -63,7 +63,12 @@ export class BoostedToken extends AbstractCurrency {
         this.underlying.equals(other.underlying)
       );
     }
-    return false;
+
+    return (
+      other.isToken &&
+      this.chainId === other.chainId &&
+      this.address === other.address
+    );
   }
 
   /**
