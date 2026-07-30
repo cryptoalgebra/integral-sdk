@@ -1,10 +1,10 @@
 import { ChainId } from './chainIds';
 
 export const POOL_DEPLOYER_ADDRESSES = {
-  [ChainId.BaseSepolia]: '0xA064Bcb79F27213b6e39dC4a2E3b977e97489BC9',
+  [ChainId.ZenithTestnet]: '0xd265f57c36AC60d3F7931eC5c7396966F0C246A7',
 };
 
 export const POOL_INIT_CODE_HASH = {
-  [ChainId.BaseSepolia]:
+  [ChainId.ZenithTestnet]:
     '0x62441ebe4e4315cf3d49d5957f94d66b253dbabe7006f34ad7f70947e60bf15c',
 };
