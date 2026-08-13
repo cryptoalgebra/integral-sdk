@@ -1,3 +1,4 @@
 export const ChainId = {
-  BaseSepolia: 84532,
+  Robinhood: 4663,
+  MonadTestnet: 10143,
 };
