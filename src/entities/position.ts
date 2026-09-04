@@ -16,6 +16,11 @@ interface PositionConstructorArgs {
   tickLower: number;
   tickUpper: number;
   liquidity: BigintIsh;
+  /**
+   * When true, tickLower and tickUpper must be aligned to the pool's current tick spacing.
+   * @default true
+   */
+  validateTickSpacing?: boolean;
 }
 
 /**
@@ -26,6 +31,7 @@ export class Position {
   public readonly tickLower: number;
   public readonly tickUpper: number;
   public readonly liquidity: JSBI;
+  private readonly _validateTickSpacing: boolean;
 
   // cached resuts for the getters
   private _token0Amount: CurrencyAmount<Token> | null = null;
@@ -43,14 +49,17 @@ export class Position {
     liquidity,
     tickLower,
     tickUpper,
+    validateTickSpacing = true,
   }: PositionConstructorArgs) {
     invariant(tickLower < tickUpper, 'TICK_ORDER');
+    invariant(tickLower >= TickMath.MIN_TICK, 'TICK_LOWER');
     invariant(
-      tickLower >= TickMath.MIN_TICK && tickLower % pool.tickSpacing === 0,
+      !validateTickSpacing || tickLower % pool.tickSpacing === 0,
       'TICK_LOWER',
     );
+    invariant(tickUpper <= TickMath.MAX_TICK, 'TICK_UPPER');
     invariant(
-      tickUpper <= TickMath.MAX_TICK && tickUpper % pool.tickSpacing === 0,
+      !validateTickSpacing || tickUpper % pool.tickSpacing === 0,
       'TICK_UPPER',
     );
 
@@ -58,6 +67,7 @@ export class Position {
     this.tickLower = tickLower;
     this.tickUpper = tickUpper;
     this.liquidity = JSBI.BigInt(liquidity);
+    this._validateTickSpacing = validateTickSpacing;
   }
 
   private _mintAmounts: Readonly<{ amount0: JSBI; amount1: JSBI }> | null =
@@ -301,6 +311,22 @@ export class Position {
   }
 
   /**
+   * Constructs a position that already exists on-chain.
+   *
+   * This intentionally skips validation against the pool's current tick spacing, because
+   * Algebra pools can change tick spacing after a position was created. Such positions
+   * can still be valid inputs for burn/remove-liquidity flows even if their ticks are no
+   * longer aligned to the current spacing.
+   *
+   * Do not use this helper for minting or adding liquidity to a new position.
+   */
+  public static fromExistingPosition(
+    args: Omit<PositionConstructorArgs, 'validateTickSpacing'>,
+  ): Position {
+    return new Position({ ...args, validateTickSpacing: false });
+  }
+
+  /**
    * Returns the minimum amounts that must be sent in order to safely mint the amount of liquidity held by the position
    * with the given slippage tolerance
    * @param slippageTolerance Tolerance of unfavorable slippage from the current price
@@ -405,6 +431,7 @@ export class Position {
       liquidity: this.liquidity,
       tickLower: this.tickLower,
       tickUpper: this.tickUpper,
+      validateTickSpacing: this._validateTickSpacing,
     }).amount0;
     // ...and the lower for amount1
     const amount1 = new Position({
@@ -412,6 +439,7 @@ export class Position {
       liquidity: this.liquidity,
       tickLower: this.tickLower,
       tickUpper: this.tickUpper,
+      validateTickSpacing: this._validateTickSpacing,
     }).amount1;
 
     return { amount0: amount0.quotient, amount1: amount1.quotient };
