@@ -1,10 +1,10 @@
-import { Token } from "./Token";
-import { Currency } from "./Currency";
+import { Token } from './Token';
+import { Currency } from './Currency';
 
 import NativeCurrency from './NativeCurrency';
 
 import invariant from 'tiny-invariant';
-import { WNATIVE } from "./wnative";
+import { WNATIVE } from '../constants/wnative';
 
 /**
  * Native is the main usage of a 'native' currency

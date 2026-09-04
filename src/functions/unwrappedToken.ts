@@ -1,10 +1,15 @@
-import { Currency, Native } from "../entities";
-import { WNATIVE } from "../entities/wnative";
+import { Currency, Native } from '../entities';
+import { WNATIVE } from '../constants/wnative';
 
 export function unwrappedToken(currency: Currency): Currency {
-    if (currency.isNative) return currency;
+  if (currency.isNative) return currency;
 
-    if (currency.equals(WNATIVE[currency.chainId])) return Native.onChain(currency.chainId, currency.symbol ?? '', currency.name ?? '');
+  if (currency.equals(WNATIVE[currency.chainId]))
+    return Native.onChain(
+      currency.chainId,
+      currency.symbol ?? '',
+      currency.name ?? ''
+    );
 
-    return currency;
+  return currency;
 }

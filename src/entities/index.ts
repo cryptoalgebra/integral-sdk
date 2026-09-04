@@ -14,4 +14,3 @@ export * from './NativeCurrency';
 export * from './Native';
 export * from './Fraction';
 export * from './ExtendedNative';
-export * from './wnative';

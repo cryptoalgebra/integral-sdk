@@ -1,6 +1,6 @@
 import { Native } from './Native';
 import { Token } from './Token';
-import { WNATIVE } from './wnative';
+import { WNATIVE } from '../constants/wnative';
 
 export class ExtendedNative extends Native {
   private static _cachedNative: { [chainId: number]: ExtendedNative } = {};
@@ -9,7 +9,11 @@ export class ExtendedNative extends Native {
     return WNATIVE[this.chainId];
   }
 
-  public static onChain(chainId: number, symbol: string, name: string): ExtendedNative {
+  public static onChain(
+    chainId: number,
+    symbol: string,
+    name: string
+  ): ExtendedNative {
     return (
       this._cachedNative[chainId] ??
       (this._cachedNative[chainId] = new ExtendedNative(chainId, symbol, name))
