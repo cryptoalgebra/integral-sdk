@@ -5,6 +5,13 @@ import { Token } from '../entities/Token';
  * Known WETH9 implementation addresses, used in our implementation of Ether#wrapped
  */
 export const WNATIVE: { [chainId: number]: Token } = {
+  [ChainId.BSC]: new Token(
+    ChainId.BSC,
+    '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
+    18,
+    'WBNB',
+    'Wrapped BNB'
+  ),
   [ChainId.Robinhood]: new Token(
     ChainId.Robinhood,
     '0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73',
